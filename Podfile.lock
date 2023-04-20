@@ -1,0 +1,16 @@
+PODS:
+  - ObjectivePGP (0.99.2)
+
+DEPENDENCIES:
+  - ObjectivePGP
+
+SPEC REPOS:
+  trunk:
+    - ObjectivePGP
+
+SPEC CHECKSUMS:
+  ObjectivePGP: 4ecece797bebcd4129e888180bb401c1d3be13b7
+
+PODFILE CHECKSUM: 687e4553c45c3a2ab11b71e75676e5443436f636
+
+COCOAPODS: 1.12.0

@@ -43,6 +43,7 @@
 		138F9CEE29F0445000B9A248 /* VerifySignaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CE929F0445000B9A248 /* VerifySignaturePresenter.swift */; };
 		138F9CEF29F0445000B9A248 /* VerifySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CEA29F0445000B9A248 /* VerifySignatureViewController.swift */; };
 		138F9CF029F0445000B9A248 /* VerifySignatureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CEB29F0445000B9A248 /* VerifySignatureBuilder.swift */; };
+		88500C5360B56772CE743C7A /* Pods_PGP_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -84,6 +85,9 @@
 		138F9CE929F0445000B9A248 /* VerifySignaturePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySignaturePresenter.swift; sourceTree = "<group>"; };
 		138F9CEA29F0445000B9A248 /* VerifySignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySignatureViewController.swift; sourceTree = "<group>"; };
 		138F9CEB29F0445000B9A248 /* VerifySignatureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySignatureBuilder.swift; sourceTree = "<group>"; };
+		6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PGP_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PGP-example.release.xcconfig"; path = "Target Support Files/Pods-PGP-example/Pods-PGP-example.release.xcconfig"; sourceTree = "<group>"; };
+		C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PGP-example.debug.xcconfig"; path = "Target Support Files/Pods-PGP-example/Pods-PGP-example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88500C5360B56772CE743C7A /* Pods_PGP_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +107,8 @@
 			children = (
 				138F9C8029F03B2000B9A248 /* PGP-example */,
 				138F9C7F29F03B2000B9A248 /* Products */,
+				DF545658B882C21D4AF9EB2D /* Pods */,
+				A1FA006779474937552C68F1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +268,24 @@
 			path = VerifySignature;
 			sourceTree = "<group>";
 		};
+		A1FA006779474937552C68F1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DF545658B882C21D4AF9EB2D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */,
+				9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -268,9 +293,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 138F9C9229F03B2100B9A248 /* Build configuration list for PBXNativeTarget "PGP-example" */;
 			buildPhases = (
+				3F8BB76049E254199621B11C /* [CP] Check Pods Manifest.lock */,
 				138F9C7A29F03B2000B9A248 /* Sources */,
 				138F9C7B29F03B2000B9A248 /* Frameworks */,
 				138F9C7C29F03B2000B9A248 /* Resources */,
+				89D9E6638C9918F8A5BC80F4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -328,6 +355,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3F8BB76049E254199621B11C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PGP-example-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89D9E6638C9918F8A5BC80F4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PGP-example/Pods-PGP-example-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PGP-example/Pods-PGP-example-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PGP-example/Pods-PGP-example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		138F9C7A29F03B2000B9A248 /* Sources */ = {
@@ -498,6 +567,7 @@
 		};
 		138F9C9329F03B2100B9A248 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -525,6 +595,7 @@
 		};
 		138F9C9429F03B2100B9A248 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
