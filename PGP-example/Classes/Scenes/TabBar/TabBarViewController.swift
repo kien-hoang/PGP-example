@@ -77,6 +77,13 @@ private extension TabBarViewController {
                                                          tag: 2)
                 return viewController
                 
+            case .encrypt:
+                let viewController = EncryptBuilder.build()
+                viewController.tabBarItem = UITabBarItem(title: $0.title,
+                                                         image: UIImage(systemName: "lock"),
+                                                         tag: 3)
+                return viewController
+                
             default:
                 return UIViewController()
             }
