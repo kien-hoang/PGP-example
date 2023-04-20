@@ -1,16 +1,20 @@
 PODS:
   - ObjectivePGP (0.99.2)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - ObjectivePGP
+  - Toast-Swift (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
     - ObjectivePGP
+    - Toast-Swift
 
 SPEC CHECKSUMS:
   ObjectivePGP: 4ecece797bebcd4129e888180bb401c1d3be13b7
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 687e4553c45c3a2ab11b71e75676e5443436f636
+PODFILE CHECKSUM: cb2dd23986faf77d2d1c79f7002fff9d2f86972b
 
 COCOAPODS: 1.12.0

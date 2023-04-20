@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import SVProgressHUD
+import Toast_Swift
 
 class BaseViewController: UIViewController {
     
@@ -17,17 +17,16 @@ class BaseViewController: UIViewController {
 
 // MARK: - BaseViewProtocol
 
-//extension BaseViewController {
-//    func showLoading() {
-//        SVProgressHUD.show()
-//    }
-//    
-//    func finishLoading() {
-//        SVProgressHUD.dismiss()
-//    }
-//    
-//    func showError(_ error: String) {
-//        SVProgressHUD.showError(withStatus: error)
-//        SVProgressHUD.dismiss(withDelay: 1.5)
-//    }
-//}
+extension BaseViewController {
+    func showLoading() {
+        view.makeToastActivity(.center)
+    }
+    
+    func finishLoading() {
+        view.hideToastActivity()
+    }
+    
+    func showError(_ error: String) {
+        view.makeToast(error, duration: 1.5)
+    }
+}

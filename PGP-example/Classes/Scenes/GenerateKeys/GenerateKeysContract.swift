@@ -11,11 +11,11 @@ import Foundation
 // MARK: View -> Presenter
 
 protocol ViewToPresenterGenerateKeysProtocol {
-    
+    func requestGeneratePairKeys(email: String, passphrase: String)
 }
 
 // MARK: Presenter -> View
 
-protocol PresenterToViewGenerateKeysProtocol: AnyObject {
-    
+protocol PresenterToViewGenerateKeysProtocol: BaseViewProtocol {
+    func showPairKeys(publicKey: String?, privateKey: String?)
 }

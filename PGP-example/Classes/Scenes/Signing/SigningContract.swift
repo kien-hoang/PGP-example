@@ -11,11 +11,11 @@ import Foundation
 // MARK: View -> Presenter
 
 protocol ViewToPresenterSigningProtocol {
-    
+    func requestSigningMessage(_ message: String, passPhrase: String)
 }
 
 // MARK: Presenter -> View
 
-protocol PresenterToViewSigningProtocol: AnyObject {
-    
+protocol PresenterToViewSigningProtocol: BaseViewProtocol {
+    func showSignedMessage(_ signedMessage: String)
 }

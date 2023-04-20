@@ -43,6 +43,7 @@
 		138F9CEE29F0445000B9A248 /* VerifySignaturePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CE929F0445000B9A248 /* VerifySignaturePresenter.swift */; };
 		138F9CEF29F0445000B9A248 /* VerifySignatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CEA29F0445000B9A248 /* VerifySignatureViewController.swift */; };
 		138F9CF029F0445000B9A248 /* VerifySignatureBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CEB29F0445000B9A248 /* VerifySignatureBuilder.swift */; };
+		7ECC7AD929F13CD000BCE6CA /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC7AD829F13CD000BCE6CA /* UIViewController+Toast.swift */; };
 		88500C5360B56772CE743C7A /* Pods_PGP_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */; };
 /* End PBXBuildFile section */
 
@@ -86,6 +87,7 @@
 		138F9CEA29F0445000B9A248 /* VerifySignatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySignatureViewController.swift; sourceTree = "<group>"; };
 		138F9CEB29F0445000B9A248 /* VerifySignatureBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifySignatureBuilder.swift; sourceTree = "<group>"; };
 		6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PGP_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ECC7AD829F13CD000BCE6CA /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PGP-example.release.xcconfig"; path = "Target Support Files/Pods-PGP-example/Pods-PGP-example.release.xcconfig"; sourceTree = "<group>"; };
 		C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PGP-example.debug.xcconfig"; path = "Target Support Files/Pods-PGP-example/Pods-PGP-example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,9 +189,9 @@
 		138F9CA729F03B4B00B9A248 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7ECC7AD729F13CB900BCE6CA /* UIViewController */,
 				138F9CAC29F03B4B00B9A248 /* UICollectionView */,
 				138F9CAF29F03B4B00B9A248 /* UITableView */,
-				138F9CA829F03B4B00B9A248 /* UIViewController+Extensions.swift */,
 				138F9CA929F03B4B00B9A248 /* UIView+Extensions.swift */,
 				138F9CAB29F03B4B00B9A248 /* UIApplication+Extensions.swift */,
 				138F9CAA29F03B4B00B9A248 /* String+Extensions.swift */,
@@ -268,6 +270,15 @@
 			path = VerifySignature;
 			sourceTree = "<group>";
 		};
+		7ECC7AD729F13CB900BCE6CA /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				138F9CA829F03B4B00B9A248 /* UIViewController+Extensions.swift */,
+				7ECC7AD829F13CD000BCE6CA /* UIViewController+Toast.swift */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 		A1FA006779474937552C68F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,7 +293,6 @@
 				C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */,
 				9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -413,6 +423,7 @@
 				138F9CE229F03BBD00B9A248 /* SigningViewController.swift in Sources */,
 				138F9CCD29F03B4C00B9A248 /* BaseViewController.swift in Sources */,
 				138F9CBF29F03B4C00B9A248 /* GenerateKeysViewController.swift in Sources */,
+				7ECC7AD929F13CD000BCE6CA /* UIViewController+Toast.swift in Sources */,
 				138F9CBD29F03B4C00B9A248 /* GenerateKeysBuilder.swift in Sources */,
 				138F9CC429F03B4C00B9A248 /* UIViewController+Extensions.swift in Sources */,
 				138F9CCE29F03B4C00B9A248 /* BaseView.swift in Sources */,
@@ -570,7 +581,7 @@
 			baseConfigurationReference = C1CD1FE1DFDE8D2D50E3BFFE /* Pods-PGP-example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 36BF9P9PDN;
@@ -598,7 +609,7 @@
 			baseConfigurationReference = 9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 36BF9P9PDN;
