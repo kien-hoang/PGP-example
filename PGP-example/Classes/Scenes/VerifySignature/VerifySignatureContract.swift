@@ -11,7 +11,7 @@ import Foundation
 // MARK: View -> Presenter
 
 protocol ViewToPresenterVerifySignatureProtocol {
-    
+    func requestVerifySignature(_ signedMessage: String)
 }
 
 // MARK: Presenter -> View
