@@ -14,7 +14,8 @@ final class GenerateKeysBuilder {
     
     static func build() -> GenerateKeysViewController {
         let viewController = GenerateKeysViewController.initViewController()
-        let presenter = GenerateKeysPresenter(view: viewController)
+        let presenter = GenerateKeysPresenter(view: viewController,
+                                              pgpService: PGPService())
         
         viewController.presenter = presenter
         

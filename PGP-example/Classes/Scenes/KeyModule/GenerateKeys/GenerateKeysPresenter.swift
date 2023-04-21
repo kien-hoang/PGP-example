@@ -16,11 +16,13 @@ final class GenerateKeysPresenter {
     // MARK: - Private Variable
     
     private weak var view: PresenterToViewGenerateKeysProtocol?
+    private let pgpService: PGPService
     
     // MARK: - Lifecycle
     
-    init(view: PresenterToViewGenerateKeysProtocol) {
+    init(view: PresenterToViewGenerateKeysProtocol, pgpService: PGPService) {
         self.view = view
+        self.pgpService = pgpService
     }
 }
 
@@ -30,13 +32,10 @@ extension GenerateKeysPresenter: ViewToPresenterGenerateKeysProtocol {
     func requestGeneratePairKeys(email: String, passphrase: String) {
         view?.showLoading()
         DispatchQueue.global().async {
-            let key = KeyGenerator().generate(for: email, passphrase: passphrase)
-            // PGPGlobal.shared.key = key // FIXME: testing purpose
-            let keyring = ObjectivePGP.defaultKeyring
-            keyring.import(keys: [key])
+            let key = self.pgpService.generateNewPairKeys(email: email, passphrase: passphrase)
             
-            let publicKey = self.getArmoredKey(key, as: .public)
-            let secretKey = self.getArmoredKey(key, as: .secret)
+            let publicKey = key.getArmoredKey(as: .public)
+            let secretKey = key.getArmoredKey(as: .secret)
             
             DispatchQueue.main.async {
                 self.view?.finishLoading()
@@ -49,16 +48,5 @@ extension GenerateKeysPresenter: ViewToPresenterGenerateKeysProtocol {
 // MARK: - Private
 
 private extension GenerateKeysPresenter {
-    func getArmoredKey(_ key: Key, as type: PGPKeyType) -> String? {
-        guard let keyData = try? key.export(keyType: type) else { return nil }
-
-        switch type {
-        case .public:
-            return Armor.armored(keyData, as: .publicKey)
-        case .secret:
-            return Armor.armored(keyData, as: .secretKey)
-        default:
-            return nil
-        }
-    }
+    
 }

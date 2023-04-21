@@ -57,11 +57,11 @@ private extension TabBarViewController {
         let viewControllers: [UIViewController] = presenter.tabBarItems.map {
             switch $0 {
             case .generateKeys:
-                let viewController = GenerateKeysBuilder.build()
+                let viewController = ListKeysBuilder.build()
                 viewController.tabBarItem = UITabBarItem(title: $0.title,
                                                          image: UIImage(systemName: "key"),
                                                          tag: 0)
-                return viewController
+                return UINavigationController(rootViewController: viewController)
                 
             case .signing:
                 let viewController = SigningBuilder.build()
