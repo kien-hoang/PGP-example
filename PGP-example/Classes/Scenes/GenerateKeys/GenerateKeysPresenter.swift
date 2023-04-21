@@ -31,7 +31,10 @@ extension GenerateKeysPresenter: ViewToPresenterGenerateKeysProtocol {
         view?.showLoading()
         DispatchQueue.global().async {
             let key = KeyGenerator().generate(for: email, passphrase: passphrase)
-            PGPGlobal.shared.key = key // FIXME: testing purpose
+            // PGPGlobal.shared.key = key // FIXME: testing purpose
+            let keyring = ObjectivePGP.defaultKeyring
+            keyring.import(keys: [key])
+            
             let publicKey = self.getArmoredKey(key, as: .public)
             let secretKey = self.getArmoredKey(key, as: .secret)
             

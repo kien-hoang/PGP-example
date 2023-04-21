@@ -55,6 +55,9 @@
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="pastePublicKeyFromClipboardButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="B9K-DJ-VXj"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -116,6 +119,9 @@
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="pastePrivateKeyFromClipboardButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xr4-XD-dq1"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -254,6 +260,9 @@
                                                                 <real key="value" value="4"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="copyEcryptedMessageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ck6-4t-Fm3"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -276,6 +285,13 @@
                             <constraint firstItem="XHx-RN-dSB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nx2-7h-7b5"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="encryptedMessageLabel" destination="afj-GI-8wW" id="t3i-9h-D6y"/>
+                        <outlet property="passphraseTextField" destination="Rh7-De-ckF" id="ope-La-YFR"/>
+                        <outlet property="plainTextView" destination="sOQ-kF-K56" id="MbZ-Mv-kSJ"/>
+                        <outlet property="privateKeyTextView" destination="hnM-e6-KoU" id="1Sg-4T-8Rb"/>
+                        <outlet property="publicKeyTextView" destination="VfV-7I-kEt" id="SRZ-cU-6ic"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

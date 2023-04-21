@@ -11,11 +11,14 @@ import Foundation
 // MARK: View -> Presenter
 
 protocol ViewToPresenterEncryptProtocol {
-    func requestEncryptMessage(_ message: String)
+    func requestEncryptMessage(_ message: String,
+                               publicKeyString: String,
+                               privateKeyString: String,
+                               passphrase: String)
 }
 
 // MARK: Presenter -> View
 
 protocol PresenterToViewEncryptProtocol: BaseViewProtocol {
-    
+    func showEncryptedMessage(_ encryptedMessage: String)
 }

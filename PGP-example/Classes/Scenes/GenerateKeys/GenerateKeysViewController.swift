@@ -46,12 +46,12 @@ private extension GenerateKeysViewController {
     }
     
     @IBAction func copyPublicKeyButtonTapped(_ sender: Any) {
-        UIPasteboard.general.string = publicKeyLabel.text.orEmpty
+        UIPasteboard.general.string = publicKeyLabel.text
         makeToast("Copy public key success!")
     }
     
     @IBAction func copyPrivateKeyButtonTapped(_ sender: Any) {
-        UIPasteboard.general.string = privateKeyLabel.text.orEmpty
+        UIPasteboard.general.string = privateKeyLabel.text
         makeToast("Copy private key success!")
     }
 }
