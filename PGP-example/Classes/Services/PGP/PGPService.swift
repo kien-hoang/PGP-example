@@ -37,6 +37,28 @@ final class PGPService: IPGPService {
         let encryptedString = Armor.armored(encryptedData, as: .message)
         return encryptedString
     }
+    
+    func decrypt(encryptedMessage: String, key: Keychain, passphrase: String) throws -> String {
+        guard let range = encryptedMessage.range(of: #"-----BEGIN PGP MESSAGE-----(.|\s)*-----END PGP MESSAGE-----"#,
+                                        options: .regularExpression) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
+        }
+        
+        let message = String(encryptedMessage[range])
+        guard let messageData = message.data(using: .ascii) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
+        }
+        
+        let decrypted = try ObjectivePGP.decrypt(messageData,
+                                                 andVerifySignature: false,
+                                                 using: [key],
+                                                 passphraseForKey: { _ in return passphrase })
+        
+        guard let decryptedMessage = String(data: decrypted, encoding: .utf8) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
+        }
+        return decryptedMessage
+    }
 }
 
 // MARK: - Private

@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: View -> Presenter
 
-protocol ViewToPresenterEncryptListKeysProtocol {
+protocol ViewToPresenterSelectionKeyProtocol {
     var keys: [Keychain] { get }
     
     func requestNewListKeys()
@@ -19,12 +19,12 @@ protocol ViewToPresenterEncryptListKeysProtocol {
 
 // MARK: Presenter -> View
 
-protocol PresenterToViewEncryptListKeysProtocol: AnyObject {
+protocol PresenterToViewSelectionKeyProtocol: AnyObject {
     func reloadTableViewData()
 }
 
 // MARK: - External Delegate
 
-protocol EncryptListKeysPresenterDelegate: AnyObject {
+protocol SelectionKeyPresenterDelegate: AnyObject {
     func encryptListKeysDidSelectKey(_ key: Keychain)
 }

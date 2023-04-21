@@ -1,5 +1,5 @@
 //
-//  EncryptListKeysViewController.swift
+//  SelectionKeyViewController.swift
 //  PGP-example
 //
 //  Created by Bradley Hoang on 21/04/2023.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class EncryptListKeysViewController: BaseViewController {
+final class SelectionKeyViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
@@ -16,7 +16,7 @@ final class EncryptListKeysViewController: BaseViewController {
     
     // MARK: - Public Variable
     
-    var presenter: ViewToPresenterEncryptListKeysProtocol!
+    var presenter: ViewToPresenterSelectionKeyProtocol!
     
     // MARK: - Private Variable
     
@@ -28,23 +28,18 @@ final class EncryptListKeysViewController: BaseViewController {
         presenter.requestNewListKeys()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     override func applyLocalization() {}
 }
 
 // MARK: - IBAction
 
-private extension EncryptListKeysViewController {
+private extension SelectionKeyViewController {
     
 }
 
 // MARK: - PresenterToView
 
-extension EncryptListKeysViewController: PresenterToViewEncryptListKeysProtocol {
+extension SelectionKeyViewController: PresenterToViewSelectionKeyProtocol {
     func reloadTableViewData() {
         tableView.reloadData()
     }
@@ -52,10 +47,10 @@ extension EncryptListKeysViewController: PresenterToViewEncryptListKeysProtocol 
 
 // MARK: - Private
 
-private extension EncryptListKeysViewController {
+private extension SelectionKeyViewController {
     func setupUI() {
         title = "Select Key"
-                
+        
         tableView.register(EncryptListKeysCell.self)
         tableView.dataSource = self
         tableView.delegate = self
@@ -64,7 +59,7 @@ private extension EncryptListKeysViewController {
 
 // MARK: - UITableViewDataSource
 
-extension EncryptListKeysViewController: UITableViewDataSource {
+extension SelectionKeyViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.keys.count
     }
@@ -76,7 +71,7 @@ extension EncryptListKeysViewController: UITableViewDataSource {
     }
 }
 
-extension EncryptListKeysViewController: UITableViewDelegate {
+extension SelectionKeyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedKey = presenter.keys[indexPath.row]
         presenter.requestSelectedKey(selectedKey)

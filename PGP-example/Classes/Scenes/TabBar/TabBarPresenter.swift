@@ -35,7 +35,7 @@ final class TabBarPresenter {
     
     // MARK: - Public Variable
     
-    var tabBarItems: [TabBarType] = [.generateKeys, .signing, .encrypt]
+    var tabBarItems: [TabBarType] = [.generateKeys, .signing, .encrypt, .decrypt]
     
     // MARK: - Private Variable
     

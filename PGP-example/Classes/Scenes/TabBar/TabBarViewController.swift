@@ -84,8 +84,12 @@ private extension TabBarViewController {
                                                          tag: 3)
                 return UINavigationController(rootViewController: viewController)
                 
-            default:
-                return UIViewController()
+            case .decrypt:
+                let viewController = DecryptBuilder.build()
+                viewController.tabBarItem = UITabBarItem(title: $0.title,
+                                                         image: UIImage(systemName: "lock.open"),
+                                                         tag: 3)
+                return UINavigationController(rootViewController: viewController)
             }
         }
         self.viewControllers = viewControllers

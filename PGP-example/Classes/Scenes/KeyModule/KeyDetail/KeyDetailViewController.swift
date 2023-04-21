@@ -67,6 +67,6 @@ extension KeyDetailViewController: PresenterToViewKeyDetailProtocol {
 
 private extension KeyDetailViewController {
     func setupUI() {
-        
+        title = "Key Detail"
     }
 }

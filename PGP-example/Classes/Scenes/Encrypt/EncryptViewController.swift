@@ -36,11 +36,6 @@ final class EncryptViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
     override func applyLocalization() {
         
     }
@@ -64,9 +59,9 @@ private extension EncryptViewController {
         makeToast("Paste private key from clipboard success!")
     }
     
-    @IBAction func copyEcryptedMessageButtonTapped(_ sender: Any) {
+    @IBAction func copyEncryptedMessageButtonTapped(_ sender: Any) {
         UIPasteboard.general.string = encryptedMessageLabel.text
-        makeToast("Copy ecrypted message success!")
+        makeToast("Copy encrypted message success!")
     }
 }
 
@@ -87,13 +82,15 @@ extension EncryptViewController: PresenterToViewEncryptProtocol {
 
 private extension EncryptViewController {
     func setupUI() {
+        title = "Encrypt"
+        
         let tap = UITapGestureRecognizer(target: self, action: #selector(showListKeys))
         selectedKeyContainerView.isUserInteractionEnabled = true
         selectedKeyContainerView.addGestureRecognizer(tap)
     }
     
     @objc func showListKeys() {
-        let vc = EncryptListKeysBuilder.build(delegate: presenter)
+        let vc = SelectionKeyBuilder.build(delegate: presenter)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

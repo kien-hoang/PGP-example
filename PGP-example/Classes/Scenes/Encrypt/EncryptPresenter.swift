@@ -31,7 +31,6 @@ final class EncryptPresenter {
 // MARK: - ViewToPresenter
 
 extension EncryptPresenter: ViewToPresenterEncryptProtocol {
-    
     func encryptListKeysDidSelectKey(_ key: Keychain) {
         selectedKey = key
         view?.showSelectedKeyInformation(id: key.keyID.shortIdentifier,
@@ -46,32 +45,6 @@ extension EncryptPresenter: ViewToPresenterEncryptProtocol {
         do {
             let encryptedString = try pgpService.encrypt(message: message, key: selectedKey, passphrase: passphrase)
             view?.showEncryptedMessage(encryptedString)
-            
-        } catch {
-            view?.showError(error.localizedDescription)
-        }
-    }
-    
-    func requestEncryptMessage(_ message: String) {
-        let data = "Hello Bradley 054".data(using: .utf8)!
-        do {
-            let encrypted = try ObjectivePGP.encrypt(data, addSignature: true, using: [PGPGlobal.shared.key])
-            let encryptedMessage = Armor.armored(encrypted, as: .message)
-            print("encryptedMessage: \n\(encryptedMessage)")
-            
-            
-            guard let range = encryptedMessage.range(of: #"-----BEGIN PGP MESSAGE-----(.|\s)*-----END PGP MESSAGE-----"#,
-                                            options: .regularExpression) else {
-                return
-            }
-            let message = String(encryptedMessage[range])
-            guard let messageData = message.data(using: .ascii) else { return  }
-            
-            
-            let decrypted = try ObjectivePGP.decrypt(messageData, andVerifySignature: false, using: [PGPGlobal.shared.key], passphraseForKey: { _ in return "bradley1"
-            })
-            let decryptedMessage = String(data: decrypted, encoding: .utf8)
-            print("decryptedMessage: \n\(decryptedMessage)")
             
         } catch {
             view?.showError(error.localizedDescription)

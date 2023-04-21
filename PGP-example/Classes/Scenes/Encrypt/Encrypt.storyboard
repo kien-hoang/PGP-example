@@ -301,7 +301,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
-                                                            <action selector="copyEcryptedMessageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ck6-4t-Fm3"/>
+                                                            <action selector="copyEncryptedMessageButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kj9-lE-HM9"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>

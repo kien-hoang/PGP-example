@@ -1,5 +1,5 @@
 //
-//  EncryptListKeysPresenter.swift
+//  SelectionKeyPresenter.swift
 //  PGP-example
 //
 //  Created by Bradley Hoang on 21/04/2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class EncryptListKeysPresenter {
+final class SelectionKeyPresenter {
     
     // MARK: - Public Variable
     
@@ -16,15 +16,15 @@ final class EncryptListKeysPresenter {
     
     // MARK: - Private Variable
     
-    private weak var view: PresenterToViewEncryptListKeysProtocol?
+    private weak var view: PresenterToViewSelectionKeyProtocol?
     private let pgpService: PGPService
-    private weak var delegate: EncryptListKeysPresenterDelegate?
+    private weak var delegate: SelectionKeyPresenterDelegate?
     
     // MARK: - Lifecycle
     
-    init(view: PresenterToViewEncryptListKeysProtocol,
+    init(view: PresenterToViewSelectionKeyProtocol,
          pgpService: PGPService,
-         delegate: EncryptListKeysPresenterDelegate) {
+         delegate: SelectionKeyPresenterDelegate) {
         self.view = view
         self.pgpService = pgpService
         self.delegate = delegate
@@ -33,7 +33,7 @@ final class EncryptListKeysPresenter {
 
 // MARK: - ViewToPresenter
 
-extension EncryptListKeysPresenter: ViewToPresenterEncryptListKeysProtocol {
+extension SelectionKeyPresenter: ViewToPresenterSelectionKeyProtocol {
     func requestNewListKeys() {
         keys = pgpService.getAllKeys()
         view?.reloadTableViewData()
@@ -46,6 +46,6 @@ extension EncryptListKeysPresenter: ViewToPresenterEncryptListKeysProtocol {
 
 // MARK: - Private
 
-private extension EncryptListKeysPresenter {
+private extension SelectionKeyPresenter {
     
 }
