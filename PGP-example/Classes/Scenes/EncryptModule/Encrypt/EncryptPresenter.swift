@@ -16,31 +16,35 @@ final class EncryptPresenter {
     // MARK: - Private Variable
     
     private weak var view: PresenterToViewEncryptProtocol?
+    private let pgpService: PGPService
+    
+    private var selectedKey: Key?
     
     // MARK: - Lifecycle
     
-    init(view: PresenterToViewEncryptProtocol) {
+    init(view: PresenterToViewEncryptProtocol, pgpService: PGPService) {
         self.view = view
+        self.pgpService = pgpService
     }
 }
-
-
 
 // MARK: - ViewToPresenter
 
 extension EncryptPresenter: ViewToPresenterEncryptProtocol {
-    func requestEncryptMessage(_ message: String,
-                               publicKeyString: String,
-                               privateKeyString: String,
-                               passphrase: String) {
+    
+    func encryptListKeysDidSelectKey(_ key: Keychain) {
+        selectedKey = key
+        view?.showSelectedKeyInformation(id: key.keyID.shortIdentifier,
+                                         fingerprint: key.getFingerprint() ?? "---")
+    }
+    
+    func requestEncryptMessage(_ message: String, passphrase: String) {
+        guard let selectedKey = selectedKey else {
+            view?.showError("Need select key first")
+            return
+        }
         do {
-            guard let messageData = message.data(using: .utf8) else {
-                throw PGPError(_nsError: NSError(domain: "Invalid raw input message", code: -1))
-            }
-            let keyring = ObjectivePGP.defaultKeyring
-            
-            let encryptedData = try ObjectivePGP.encrypt(messageData, addSignature: !privateKeyString.isEmpty, using: keyring.keys, passphraseForKey: { _ in return passphrase })
-            let encryptedString = Armor.armored(encryptedData, as: .message)
+            let encryptedString = try pgpService.encrypt(message: message, key: selectedKey, passphrase: passphrase)
             view?.showEncryptedMessage(encryptedString)
             
         } catch {

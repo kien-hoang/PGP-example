@@ -82,7 +82,7 @@ private extension TabBarViewController {
                 viewController.tabBarItem = UITabBarItem(title: $0.title,
                                                          image: UIImage(systemName: "lock"),
                                                          tag: 3)
-                return viewController
+                return UINavigationController(rootViewController: viewController)
                 
             default:
                 return UIViewController()

@@ -24,6 +24,19 @@ final class PGPService: IPGPService {
         saveKey(key)
         return key
     }
+    
+    func encrypt(message: String, key: Keychain, passphrase: String) throws -> String {
+        guard let messageData = message.data(using: .utf8) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid raw input message", code: -1))
+        }
+        
+        let encryptedData = try ObjectivePGP.encrypt(messageData,
+                                                     addSignature: !passphrase.isEmpty,
+                                                     using: [key],
+                                                     passphraseForKey: { _ in return passphrase })
+        let encryptedString = Armor.armored(encryptedData, as: .message)
+        return encryptedString
+    }
 }
 
 // MARK: - Private

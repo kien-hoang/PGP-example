@@ -68,14 +68,4 @@ private extension Key {
         }
         return type
     }
-    
-    func getFingerprint() -> String? {
-        if let pubKey = self.publicKey {
-            return pubKey.fingerprint.description()
-        } else if let privateKey = self.secretKey {
-            return privateKey.fingerprint.description()
-        } else {
-            return nil
-        }
-    }
 }

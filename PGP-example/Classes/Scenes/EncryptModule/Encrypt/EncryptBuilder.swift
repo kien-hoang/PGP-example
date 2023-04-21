@@ -14,7 +14,8 @@ final class EncryptBuilder {
     
     static func build() -> EncryptViewController {
         let viewController = EncryptViewController.initViewController()
-        let presenter = EncryptPresenter(view: viewController)
+        let presenter = EncryptPresenter(view: viewController,
+                                         pgpService: PGPService())
         
         viewController.presenter = presenter
         

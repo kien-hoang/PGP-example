@@ -12,6 +12,10 @@ final class EncryptViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
+    @IBOutlet private weak var selectedKeyContainerView: UIStackView!
+    @IBOutlet private weak var selectedKeyIdLabel: UILabel!
+    @IBOutlet private weak var selectedFingerprintLabel: UILabel!
+    
     @IBOutlet private weak var publicKeyTextView: UITextView!
     @IBOutlet private weak var privateKeyTextView: UITextView!
     @IBOutlet private weak var passphraseTextField: UITextField!
@@ -32,6 +36,11 @@ final class EncryptViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
     override func applyLocalization() {
         
     }
@@ -42,8 +51,6 @@ final class EncryptViewController: BaseViewController {
 private extension EncryptViewController {
     @IBAction func encryptMessageButtonTapped(_ sender: Any) {
         presenter.requestEncryptMessage(plainTextView.text,
-                                        publicKeyString: publicKeyTextView.text,
-                                        privateKeyString: privateKeyTextView.text,
                                         passphrase: passphraseTextField.text.orEmpty)
     }
     
@@ -66,6 +73,11 @@ private extension EncryptViewController {
 // MARK: - PresenterToView
 
 extension EncryptViewController: PresenterToViewEncryptProtocol {
+    func showSelectedKeyInformation(id: String, fingerprint: String) {
+        selectedKeyIdLabel.text = id
+        selectedFingerprintLabel.text = fingerprint
+    }
+    
     func showEncryptedMessage(_ encryptedMessage: String) {
         encryptedMessageLabel.text = encryptedMessage
     }
@@ -75,6 +87,13 @@ extension EncryptViewController: PresenterToViewEncryptProtocol {
 
 private extension EncryptViewController {
     func setupUI() {
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(showListKeys))
+        selectedKeyContainerView.isUserInteractionEnabled = true
+        selectedKeyContainerView.addGestureRecognizer(tap)
+    }
+    
+    @objc func showListKeys() {
+        let vc = EncryptListKeysBuilder.build(delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
