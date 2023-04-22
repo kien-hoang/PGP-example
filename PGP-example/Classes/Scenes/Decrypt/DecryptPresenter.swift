@@ -37,6 +37,10 @@ extension DecryptPresenter: ViewToPresenterDecryptProtocol {
             view?.showError("Need receiver's private key!")
             return
         }
+        guard !passphrase.isEmpty else {
+            view?.showError("Need passphrase for receiver's private key!")
+            return
+        }
         
         do {
             let decryptedMessage = try pgpService.decrypt(encryptedMessage: encryptedMessage,

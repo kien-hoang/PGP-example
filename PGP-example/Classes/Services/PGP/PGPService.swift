@@ -79,18 +79,27 @@ final class PGPService: IPGPService {
                  passphrase: String) throws -> String {
         
         var inputKeys: [Keychain] = [receiverPrivateKey]
-        var andVerifySignature: Bool = false
-        
+
         if let signerPublicKey = signerPublicKey {
-            andVerifySignature = true
             inputKeys.append(signerPublicKey)
         }
         
         let messageData = try Armor.readArmored(encryptedMessage)
+        
+        var verified: Int32 = 0
+        var decryptionError: NSError?
+        
         let decrypted = try ObjectivePGP.decrypt(messageData,
-                                                 andVerifySignature: andVerifySignature,
+                                                 verified: &verified,
+                                                 certifyWithRootKey: false,
                                                  using: inputKeys,
-                                                 passphraseForKey: { _ in return passphrase })
+                                                 passphraseForKey: { _ in return passphrase },
+                                                 decryptionError: &decryptionError)
+        
+        if verified == PGPError.invalidSignature.rawValue {
+            throw PGPError(_nsError: NSError(domain: "Verify the signature failed!",
+                                             code: PGPError.invalidSignature.rawValue))
+        }
         
         guard let decryptedMessage = String(data: decrypted, encoding: .utf8) else {
             throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
