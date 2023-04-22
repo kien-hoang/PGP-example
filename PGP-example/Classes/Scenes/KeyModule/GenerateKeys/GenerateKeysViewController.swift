@@ -32,9 +32,7 @@ final class GenerateKeysViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
     }
     
-    override func applyLocalization() {
-        
-    }
+    override func applyLocalization() {}
 }
 
 // MARK: - IBAction
@@ -70,6 +68,6 @@ extension GenerateKeysViewController: PresenterToViewGenerateKeysProtocol {
 
 private extension GenerateKeysViewController {
     func setupUI() {
-        
+        title = "Generate new Keychain"
     }
 }
