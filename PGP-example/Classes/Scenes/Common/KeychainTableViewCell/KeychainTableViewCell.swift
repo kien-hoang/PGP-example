@@ -1,5 +1,5 @@
 //
-//  ListKeysCell.swift
+//  KeychainTableViewCell.swift
 //  PGP-example
 //
 //  Created by Bradley Hoang on 21/04/2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ListKeysCell: UITableViewCell {
+final class KeychainTableViewCell: UITableViewCell {
     
     // MARK: - IBOutlet
     
@@ -17,7 +17,7 @@ final class ListKeysCell: UITableViewCell {
 
 // MARK: - Public
 
-extension ListKeysCell {
+extension KeychainTableViewCell {
     func update(with key: Keychain) {
         fingerprintLabel.text = "Fingerprint: \(key.getShortFingerprint() ?? "not found")"
         keyTypeLabel.text = "Type: \(key.getKeyType())"

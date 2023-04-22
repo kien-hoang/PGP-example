@@ -53,8 +53,8 @@
 		138F9D0429F2BEA400B9A248 /* ListKeysPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9CFF29F2BEA400B9A248 /* ListKeysPresenter.swift */; };
 		138F9D0529F2BEA400B9A248 /* ListKeysViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D0029F2BEA400B9A248 /* ListKeysViewController.swift */; };
 		138F9D0629F2BEA400B9A248 /* ListKeysBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D0129F2BEA400B9A248 /* ListKeysBuilder.swift */; };
-		138F9D0A29F2C15B00B9A248 /* ListKeysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D0829F2C15B00B9A248 /* ListKeysCell.swift */; };
-		138F9D0B29F2C15B00B9A248 /* ListKeysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D0929F2C15B00B9A248 /* ListKeysCell.xib */; };
+		138F9D0A29F2C15B00B9A248 /* KeychainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D0829F2C15B00B9A248 /* KeychainTableViewCell.swift */; };
+		138F9D0B29F2C15B00B9A248 /* KeychainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D0929F2C15B00B9A248 /* KeychainTableViewCell.xib */; };
 		138F9D0F29F2C31E00B9A248 /* PGPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D0E29F2C31E00B9A248 /* PGPService.swift */; };
 		138F9D1729F2D08F00B9A248 /* KeyDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D1229F2D08F00B9A248 /* KeyDetail.storyboard */; };
 		138F9D1829F2D08F00B9A248 /* KeyDetailContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D1329F2D08F00B9A248 /* KeyDetailContract.swift */; };
@@ -139,8 +139,8 @@
 		138F9CFF29F2BEA400B9A248 /* ListKeysPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKeysPresenter.swift; sourceTree = "<group>"; };
 		138F9D0029F2BEA400B9A248 /* ListKeysViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKeysViewController.swift; sourceTree = "<group>"; };
 		138F9D0129F2BEA400B9A248 /* ListKeysBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKeysBuilder.swift; sourceTree = "<group>"; };
-		138F9D0829F2C15B00B9A248 /* ListKeysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListKeysCell.swift; sourceTree = "<group>"; };
-		138F9D0929F2C15B00B9A248 /* ListKeysCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListKeysCell.xib; sourceTree = "<group>"; };
+		138F9D0829F2C15B00B9A248 /* KeychainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainTableViewCell.swift; sourceTree = "<group>"; };
+		138F9D0929F2C15B00B9A248 /* KeychainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeychainTableViewCell.xib; sourceTree = "<group>"; };
 		138F9D0E29F2C31E00B9A248 /* PGPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGPService.swift; sourceTree = "<group>"; };
 		138F9D1229F2D08F00B9A248 /* KeyDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KeyDetail.storyboard; sourceTree = "<group>"; };
 		138F9D1329F2D08F00B9A248 /* KeyDetailContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailContract.swift; sourceTree = "<group>"; };
@@ -234,7 +234,6 @@
 			isa = PBXGroup;
 			children = (
 				138F9D0729F2C14E00B9A248 /* Common */,
-				138F9D5029F3C8DD00B9A248 /* KeySelection */,
 				138F9D1029F2D07300B9A248 /* KeyModule */,
 				138F9CD929F03BA700B9A248 /* Signing */,
 				138F9CF129F1991900B9A248 /* Encrypt */,
@@ -419,6 +418,7 @@
 				138F9CFC29F2BE9500B9A248 /* ListKeys */,
 				138F9D1129F2D07E00B9A248 /* KeyDetail */,
 				138F9C9D29F03B4B00B9A248 /* GenerateKeys */,
+				138F9D5029F3C8DD00B9A248 /* KeySelection */,
 			);
 			path = KeyModule;
 			sourceTree = "<group>";
@@ -513,8 +513,8 @@
 		138F9D5B29F3CA0000B9A248 /* KeychainTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				138F9D0829F2C15B00B9A248 /* ListKeysCell.swift */,
-				138F9D0929F2C15B00B9A248 /* ListKeysCell.xib */,
+				138F9D0829F2C15B00B9A248 /* KeychainTableViewCell.swift */,
+				138F9D0929F2C15B00B9A248 /* KeychainTableViewCell.xib */,
 			);
 			path = KeychainTableViewCell;
 			sourceTree = "<group>";
@@ -608,7 +608,7 @@
 				138F9D3829F2EF7500B9A248 /* Decrypt.storyboard in Resources */,
 				138F9D2829F2E73D00B9A248 /* SelectionKey.storyboard in Resources */,
 				138F9CE529F03E7600B9A248 /* Signing.storyboard in Resources */,
-				138F9D0B29F2C15B00B9A248 /* ListKeysCell.xib in Resources */,
+				138F9D0B29F2C15B00B9A248 /* KeychainTableViewCell.xib in Resources */,
 				138F9CC029F03B4C00B9A248 /* GenerateKeys.storyboard in Resources */,
 				138F9D5629F3C8F600B9A248 /* KeySelection.storyboard in Resources */,
 				138F9D3129F2EAEC00B9A248 /* EncryptListKeysCell.xib in Resources */,
@@ -676,7 +676,7 @@
 				138F9CC829F03B4C00B9A248 /* UICollectionViewCell+Extensions.swift in Sources */,
 				138F9D3929F2EF7500B9A248 /* DecryptContract.swift in Sources */,
 				138F9D2C29F2E73D00B9A248 /* SelectionKeyBuilder.swift in Sources */,
-				138F9D0A29F2C15B00B9A248 /* ListKeysCell.swift in Sources */,
+				138F9D0A29F2C15B00B9A248 /* KeychainTableViewCell.swift in Sources */,
 				138F9D2929F2E73D00B9A248 /* SelectionKeyContract.swift in Sources */,
 				138F9CCC29F03B4C00B9A248 /* Optional+Extensions.swift in Sources */,
 				138F9CC929F03B4C00B9A248 /* UICollectionView+Extensions.swift in Sources */,

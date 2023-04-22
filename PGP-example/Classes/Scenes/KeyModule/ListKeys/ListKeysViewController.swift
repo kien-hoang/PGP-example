@@ -91,7 +91,7 @@ private extension ListKeysViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(addKeyButtonTapped))
         
-        tableView.register(ListKeysCell.self)
+        tableView.register(KeychainTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -105,7 +105,7 @@ extension ListKeysViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(ListKeysCell.self, for: indexPath)
+        let cell = tableView.dequeue(KeychainTableViewCell.self, for: indexPath)
         cell.update(with: presenter.keys[indexPath.row])
         return cell
     }

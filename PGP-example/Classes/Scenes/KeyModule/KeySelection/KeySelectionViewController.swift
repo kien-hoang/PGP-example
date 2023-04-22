@@ -53,7 +53,7 @@ extension KeySelectionViewController: PresenterToViewKeySelectionProtocol {
 
 private extension KeySelectionViewController {
     func setupUI() {
-        tableView.register(ListKeysCell.self)
+        tableView.register(KeychainTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
     }
@@ -67,7 +67,7 @@ extension KeySelectionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue(ListKeysCell.self, for: indexPath)
+        let cell = tableView.dequeue(KeychainTableViewCell.self, for: indexPath)
         cell.update(with: presenter.keys[indexPath.row])
         return cell
     }
