@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum SelectionKeyType {
+    case bothKeys
+    case publicKey
+    case privateKey
+}
+
 final class SelectionKeyPresenter {
     
     // MARK: - Public Variable

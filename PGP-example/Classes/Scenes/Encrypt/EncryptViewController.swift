@@ -12,13 +12,15 @@ final class EncryptViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var selectedKeyContainerView: UIStackView!
-    @IBOutlet private weak var selectedKeyIdLabel: UILabel!
-    @IBOutlet private weak var selectedFingerprintLabel: UILabel!
+    @IBOutlet private weak var receiverPublicKeyContainerView: UIStackView!
+    @IBOutlet private weak var receiverPublicKeyFingerprintLabel: UILabel!
+    @IBOutlet private weak var receiverPublicKeyTypeLabel: UILabel!
     
-    @IBOutlet private weak var publicKeyTextView: UITextView!
-    @IBOutlet private weak var privateKeyTextView: UITextView!
+    @IBOutlet private weak var signerPrivateKeyContainerView: UIStackView!
+    @IBOutlet private weak var signerPrivateKeyFingerprintLabel: UILabel!
+    @IBOutlet private weak var signerPrivateKeyTypeLabel: UILabel!
     @IBOutlet private weak var passphraseTextField: UITextField!
+    
     @IBOutlet private weak var plainTextView: UITextView!
     @IBOutlet private weak var encryptedMessageLabel: UILabel!
     
@@ -36,9 +38,7 @@ final class EncryptViewController: BaseViewController {
         hideKeyboardWhenTappedAround()
     }
     
-    override func applyLocalization() {
-        
-    }
+    override func applyLocalization() {}
 }
 
 // MARK: - IBAction
@@ -49,16 +49,6 @@ private extension EncryptViewController {
                                         passphrase: passphraseTextField.text.orEmpty)
     }
     
-    @IBAction func pastePublicKeyFromClipboardButtonTapped(_ sender: Any) {
-        publicKeyTextView.text = UIPasteboard.general.string
-        makeToast("Paste public key from clipboard success!")
-    }
-    
-    @IBAction func pastePrivateKeyFromClipboardButtonTapped(_ sender: Any) {
-        privateKeyTextView.text = UIPasteboard.general.string
-        makeToast("Paste private key from clipboard success!")
-    }
-    
     @IBAction func copyEncryptedMessageButtonTapped(_ sender: Any) {
         UIPasteboard.general.string = encryptedMessageLabel.text
         makeToast("Copy encrypted message success!")
@@ -67,14 +57,19 @@ private extension EncryptViewController {
 
 // MARK: - PresenterToView
 
-extension EncryptViewController: PresenterToViewEncryptProtocol {
-    func showSelectedKeyInformation(id: String, fingerprint: String) {
-        selectedKeyIdLabel.text = id
-        selectedFingerprintLabel.text = fingerprint
-    }
-    
+extension EncryptViewController: PresenterToViewEncryptProtocol {    
     func showEncryptedMessage(_ encryptedMessage: String) {
         encryptedMessageLabel.text = encryptedMessage
+    }
+    
+    func showReceiverPublicKey(fingerprint: String, typeString: String) {
+        receiverPublicKeyFingerprintLabel.text = fingerprint
+        receiverPublicKeyTypeLabel.text = typeString
+    }
+    
+    func showSignerPrivateKey(fingerprint: String, typeString: String) {
+        signerPrivateKeyFingerprintLabel.text = fingerprint
+        signerPrivateKeyTypeLabel.text = typeString
     }
 }
 
@@ -82,15 +77,32 @@ extension EncryptViewController: PresenterToViewEncryptProtocol {
 
 private extension EncryptViewController {
     func setupUI() {
-        title = "Encrypt"
+        title = "Encrypt (+ Signing)"
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showListKeys))
-        selectedKeyContainerView.isUserInteractionEnabled = true
-        selectedKeyContainerView.addGestureRecognizer(tap)
+        let receiverPublicKeyTap = UITapGestureRecognizer(target: self, action: #selector(showListPublicKeys))
+        receiverPublicKeyContainerView.isUserInteractionEnabled = true
+        receiverPublicKeyContainerView.addGestureRecognizer(receiverPublicKeyTap)
+        
+        let signerPrivateKeyTap = UITapGestureRecognizer(target: self, action: #selector(didTapSignerPrivateKeyBlock))
+        signerPrivateKeyContainerView.isUserInteractionEnabled = true
+        signerPrivateKeyContainerView.addGestureRecognizer(signerPrivateKeyTap)
     }
     
-    @objc func showListKeys() {
-        let vc = SelectionKeyBuilder.build(delegate: presenter)
+    @objc func showListPublicKeys() {
+        let vc = KeySelectionBuilder.build(keychainType: .publicKey,
+                                           delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func didTapSignerPrivateKeyBlock() {
+        presenter.requestResetSignerPrivateKey()
+        showSignerPrivateKey(fingerprint: "---", typeString: "---")
+        showListPrivateKeys()
+    }
+    
+    func showListPrivateKeys() {
+        let vc = KeySelectionBuilder.build(keychainType: .privateKey,
+                                           delegate: presenter)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

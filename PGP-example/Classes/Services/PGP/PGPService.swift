@@ -10,6 +10,12 @@ import ObjectivePGP
 
 typealias Keychain = Key
 
+enum KeychainType {
+    case publicKey
+    case privateKey
+    case both
+}
+
 protocol IPGPService {
     
     func getAllKeys() -> [Keychain]
@@ -28,14 +34,51 @@ protocol IPGPService {
 
 final class PGPService: IPGPService {
     
-    func getAllKeys() -> [Keychain] {
+    func getAllKeys() -> [Keychain] { // FIXME: replace it by exportKeys(of:)
         return ObjectivePGP.defaultKeyring.keys
+    }
+    
+    func exportKeys(of type: KeychainType) -> [Keychain] {
+        switch type {
+        case .publicKey:
+            return ObjectivePGP.defaultKeyring.keys.filter { $0.isPublic }
+        case .privateKey:
+            return ObjectivePGP.defaultKeyring.keys.filter { $0.isSecret }
+        case .both:
+            return ObjectivePGP.defaultKeyring.keys
+        }
+        
     }
     
     func generateNewPairKeys(email: String, passphrase: String) -> Keychain {
         let key = KeyGenerator().generate(for: email, passphrase: passphrase)
         saveKeys([key])
         return key
+    }
+    
+    func encrypt(message: String,
+                 receiverPublicKey: Keychain,
+                 signerPrivateKey: Keychain?,
+                 passphrase: String) throws -> String {
+        
+        var inputKeys: [Keychain] = [receiverPublicKey]
+        var addSignature: Bool = false
+        
+        if let signerPrivateKey = signerPrivateKey {
+            addSignature = true
+            inputKeys.append(signerPrivateKey)
+        }
+        
+        guard let messageData = message.data(using: .utf8) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid raw input message", code: -1))
+        }
+        
+        let encryptedData = try ObjectivePGP.encrypt(messageData,
+                                                     addSignature: addSignature,
+                                                     using: inputKeys,
+                                                     passphraseForKey: { _ in return passphrase })
+        let encryptedString = Armor.armored(encryptedData, as: .message)
+        return encryptedString
     }
     
     func encrypt(message: String, key: Keychain, passphrase: String) throws -> String {

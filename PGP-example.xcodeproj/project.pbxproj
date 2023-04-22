@@ -81,6 +81,11 @@
 		138F9D4629F3873700B9A248 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D4129F3873700B9A248 /* SettingsViewController.swift */; };
 		138F9D4729F3873700B9A248 /* SettingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D4229F3873700B9A248 /* SettingsBuilder.swift */; };
 		138F9D4A29F3BF0800B9A248 /* NotificationNameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D4929F3BF0800B9A248 /* NotificationNameConstants.swift */; };
+		138F9D5629F3C8F600B9A248 /* KeySelection.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D5129F3C8F600B9A248 /* KeySelection.storyboard */; };
+		138F9D5729F3C8F600B9A248 /* KeySelectionContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D5229F3C8F600B9A248 /* KeySelectionContract.swift */; };
+		138F9D5829F3C8F600B9A248 /* KeySelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D5329F3C8F600B9A248 /* KeySelectionPresenter.swift */; };
+		138F9D5929F3C8F600B9A248 /* KeySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D5429F3C8F600B9A248 /* KeySelectionViewController.swift */; };
+		138F9D5A29F3C8F600B9A248 /* KeySelectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D5529F3C8F600B9A248 /* KeySelectionBuilder.swift */; };
 		7ECC7AD929F13CD000BCE6CA /* UIViewController+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECC7AD829F13CD000BCE6CA /* UIViewController+Toast.swift */; };
 		88500C5360B56772CE743C7A /* Pods_PGP_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */; };
 /* End PBXBuildFile section */
@@ -162,6 +167,11 @@
 		138F9D4129F3873700B9A248 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		138F9D4229F3873700B9A248 /* SettingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBuilder.swift; sourceTree = "<group>"; };
 		138F9D4929F3BF0800B9A248 /* NotificationNameConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationNameConstants.swift; sourceTree = "<group>"; };
+		138F9D5129F3C8F600B9A248 /* KeySelection.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = KeySelection.storyboard; sourceTree = "<group>"; };
+		138F9D5229F3C8F600B9A248 /* KeySelectionContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySelectionContract.swift; sourceTree = "<group>"; };
+		138F9D5329F3C8F600B9A248 /* KeySelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySelectionPresenter.swift; sourceTree = "<group>"; };
+		138F9D5429F3C8F600B9A248 /* KeySelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySelectionViewController.swift; sourceTree = "<group>"; };
+		138F9D5529F3C8F600B9A248 /* KeySelectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySelectionBuilder.swift; sourceTree = "<group>"; };
 		6448C54FD80CD4D40E30F364 /* Pods_PGP_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PGP_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ECC7AD829F13CD000BCE6CA /* UIViewController+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Toast.swift"; sourceTree = "<group>"; };
 		9A5FD9CDB933CA3F5189F737 /* Pods-PGP-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PGP-example.release.xcconfig"; path = "Target Support Files/Pods-PGP-example/Pods-PGP-example.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +233,8 @@
 		138F9C9629F03B4B00B9A248 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				138F9D0729F2C14E00B9A248 /* Common */,
+				138F9D5029F3C8DD00B9A248 /* KeySelection */,
 				138F9D1029F2D07300B9A248 /* KeyModule */,
 				138F9CD929F03BA700B9A248 /* Signing */,
 				138F9CF129F1991900B9A248 /* Encrypt */,
@@ -367,7 +379,6 @@
 		138F9CFC29F2BE9500B9A248 /* ListKeys */ = {
 			isa = PBXGroup;
 			children = (
-				138F9D0729F2C14E00B9A248 /* Cell */,
 				138F9CFD29F2BEA400B9A248 /* ListKeys.storyboard */,
 				138F9CFE29F2BEA400B9A248 /* ListKeysContract.swift */,
 				138F9CFF29F2BEA400B9A248 /* ListKeysPresenter.swift */,
@@ -377,13 +388,12 @@
 			path = ListKeys;
 			sourceTree = "<group>";
 		};
-		138F9D0729F2C14E00B9A248 /* Cell */ = {
+		138F9D0729F2C14E00B9A248 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				138F9D0829F2C15B00B9A248 /* ListKeysCell.swift */,
-				138F9D0929F2C15B00B9A248 /* ListKeysCell.xib */,
+				138F9D5B29F3CA0000B9A248 /* KeychainTableViewCell */,
 			);
-			path = Cell;
+			path = Common;
 			sourceTree = "<group>";
 		};
 		138F9D0C29F2C2EC00B9A248 /* Services */ = {
@@ -488,6 +498,27 @@
 			path = Constants;
 			sourceTree = "<group>";
 		};
+		138F9D5029F3C8DD00B9A248 /* KeySelection */ = {
+			isa = PBXGroup;
+			children = (
+				138F9D5129F3C8F600B9A248 /* KeySelection.storyboard */,
+				138F9D5229F3C8F600B9A248 /* KeySelectionContract.swift */,
+				138F9D5329F3C8F600B9A248 /* KeySelectionPresenter.swift */,
+				138F9D5429F3C8F600B9A248 /* KeySelectionViewController.swift */,
+				138F9D5529F3C8F600B9A248 /* KeySelectionBuilder.swift */,
+			);
+			path = KeySelection;
+			sourceTree = "<group>";
+		};
+		138F9D5B29F3CA0000B9A248 /* KeychainTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				138F9D0829F2C15B00B9A248 /* ListKeysCell.swift */,
+				138F9D0929F2C15B00B9A248 /* ListKeysCell.xib */,
+			);
+			path = KeychainTableViewCell;
+			sourceTree = "<group>";
+		};
 		7ECC7AD729F13CB900BCE6CA /* UIViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -579,6 +610,7 @@
 				138F9CE529F03E7600B9A248 /* Signing.storyboard in Resources */,
 				138F9D0B29F2C15B00B9A248 /* ListKeysCell.xib in Resources */,
 				138F9CC029F03B4C00B9A248 /* GenerateKeys.storyboard in Resources */,
+				138F9D5629F3C8F600B9A248 /* KeySelection.storyboard in Resources */,
 				138F9D3129F2EAEC00B9A248 /* EncryptListKeysCell.xib in Resources */,
 				138F9D1729F2D08F00B9A248 /* KeyDetail.storyboard in Resources */,
 				138F9CD729F03B5400B9A248 /* Assets.xcassets in Resources */,
@@ -663,6 +695,7 @@
 				138F9D0F29F2C31E00B9A248 /* PGPService.swift in Sources */,
 				138F9CCE29F03B4C00B9A248 /* BaseView.swift in Sources */,
 				138F9D4629F3873700B9A248 /* SettingsViewController.swift in Sources */,
+				138F9D5A29F3C8F600B9A248 /* KeySelectionBuilder.swift in Sources */,
 				138F9CE329F03BBD00B9A248 /* SigningBuilder.swift in Sources */,
 				138F9D0329F2BEA400B9A248 /* ListKeysContract.swift in Sources */,
 				138F9CC729F03B4C00B9A248 /* UIApplication+Extensions.swift in Sources */,
@@ -674,6 +707,7 @@
 				138F9D4729F3873700B9A248 /* SettingsBuilder.swift in Sources */,
 				138F9D4429F3873700B9A248 /* SettingsContract.swift in Sources */,
 				138F9CEE29F0445000B9A248 /* VerifySignaturePresenter.swift in Sources */,
+				138F9D5729F3C8F600B9A248 /* KeySelectionContract.swift in Sources */,
 				138F9D3029F2E89700B9A248 /* EncryptListKeysCell.swift in Sources */,
 				138F9CED29F0445000B9A248 /* VerifySignatureContract.swift in Sources */,
 				138F9D1829F2D08F00B9A248 /* KeyDetailContract.swift in Sources */,
@@ -699,6 +733,8 @@
 				138F9CE029F03BBD00B9A248 /* SigningContract.swift in Sources */,
 				138F9D2029F2E04900B9A248 /* PGPKey+Extensions.swift in Sources */,
 				138F9CC229F03B4C00B9A248 /* AppDelegate.swift in Sources */,
+				138F9D5829F3C8F600B9A248 /* KeySelectionPresenter.swift in Sources */,
+				138F9D5929F3C8F600B9A248 /* KeySelectionViewController.swift in Sources */,
 				138F9D2A29F2E73D00B9A248 /* SelectionKeyPresenter.swift in Sources */,
 				138F9CB929F03B4C00B9A248 /* TabBarBuilder.swift in Sources */,
 			);
