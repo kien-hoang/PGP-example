@@ -14,10 +14,12 @@ protocol ViewToPresenterListKeysProtocol {
     var keys: [Keychain] { get }
     
     func requestNewListKeys()
+    func requestAddKey(_ rawText: String)
 }
 
 // MARK: Presenter -> View
 
-protocol PresenterToViewListKeysProtocol: AnyObject {
+protocol PresenterToViewListKeysProtocol: BaseViewProtocol {
     func reloadTableViewData()
+    func showImportKeySuccessMessage(_ message: String)
 }

@@ -34,7 +34,7 @@ final class PGPService: IPGPService {
     
     func generateNewPairKeys(email: String, passphrase: String) -> Keychain {
         let key = KeyGenerator().generate(for: email, passphrase: passphrase)
-        saveKey(key)
+        saveKeys([key])
         return key
     }
     
@@ -91,13 +91,31 @@ final class PGPService: IPGPService {
         try keyring.export().write(to: fileUrl, options: .completeFileProtection)
     }
     
+    func importKey(_ keyString: String) throws -> [Keychain] {
+        guard let asciiKeyData = keyString.data(using: .ascii) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid raw input text", code: -1))
+        }
+
+        var readKeys: [Keychain] = []
+        readKeys = try ObjectivePGP.readKeys(from: asciiKeyData)
+        for key in readKeys {
+            try keyIsSupported(key: key)
+        }
+        
+        saveKeys(readKeys)
+        return readKeys
+    }
 }
 
 // MARK: - Private
 
 private extension PGPService {
-    func saveKey(_ key: Keychain) {
+    func saveKeys(_ keys: [Keychain]) {
         let keyring = ObjectivePGP.defaultKeyring
-        keyring.import(keys: [key])
+        keyring.import(keys: keys)
+    }
+    
+    func keyIsSupported(key: Keychain) throws {
+        try key.export()
     }
 }

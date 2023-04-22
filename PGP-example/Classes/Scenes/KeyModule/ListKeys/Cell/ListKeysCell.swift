@@ -11,19 +11,15 @@ final class ListKeysCell: UITableViewCell {
     
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var emailLabel: UILabel!
     @IBOutlet private weak var fingerprintLabel: UILabel!
+    @IBOutlet private weak var keyTypeLabel: UILabel!
 }
 
 // MARK: - Public
 
 extension ListKeysCell {
     func update(with key: Keychain) {
-        emailLabel.text = "KeyID: " + key.keyID.shortIdentifier
-        if let fingerprint = key.publicKey?.fingerprint.description() {
-            fingerprintLabel.text = "Fingerprint: " + fingerprint
-        } else {
-            fingerprintLabel.text = "---"
-        }
+        fingerprintLabel.text = "Fingerprint: \(key.getShortFingerprint() ?? "not found")"
+        keyTypeLabel.text = "Type: \(key.getKeyType())"
     }
 }

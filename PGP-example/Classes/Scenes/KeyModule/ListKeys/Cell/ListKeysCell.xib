@@ -55,8 +55,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="emailLabel" destination="3f0-TR-dN9" id="xjB-Xb-KaA"/>
-                <outlet property="fingerprintLabel" destination="ZNJ-ti-A4D" id="rl1-81-4ic"/>
+                <outlet property="fingerprintLabel" destination="3f0-TR-dN9" id="j8d-BK-Xb8"/>
+                <outlet property="keyTypeLabel" destination="ZNJ-ti-A4D" id="u4I-HR-Ofh"/>
             </connections>
             <point key="canvasLocation" x="138.93129770992365" y="38.028169014084511"/>
         </tableViewCell>

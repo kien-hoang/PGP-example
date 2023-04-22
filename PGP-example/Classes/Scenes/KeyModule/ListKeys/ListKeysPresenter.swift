@@ -30,6 +30,23 @@ final class ListKeysPresenter {
 // MARK: - ViewToPresenter
 
 extension ListKeysPresenter: ViewToPresenterListKeysProtocol {
+    func requestAddKey(_ rawText: String) {
+        do {
+            let importedKeys = try pgpService.importKey(rawText)
+            let isImportSuccess = !importedKeys.isEmpty
+            
+            if isImportSuccess {
+                requestNewListKeys()
+                view?.showImportKeySuccessMessage("Import success!")
+            } else {
+                view?.showImportKeySuccessMessage("Import failed!")
+            }
+            
+        } catch {
+            view?.showError(error.localizedDescription)
+        }
+    }
+    
     func requestNewListKeys() {
         keys = pgpService.getAllKeys()
         view?.reloadTableViewData()

@@ -41,8 +41,33 @@ final class ListKeysViewController: BaseViewController {
 
 private extension ListKeysViewController {
     @objc func addKeyButtonTapped(_ sender: Any) {
-        let vc = GenerateKeysBuilder.build()
-        navigationController?.pushViewController(vc, animated: true)
+        let optionMenu = UIAlertController(title: nil,
+                                           message: nil,
+                                           preferredStyle: .actionSheet)
+        //        optionMenu.popoverPresentationController?.barButtonItem = sender
+        
+        let generateKey = UIAlertAction(title: "Generate Key Pair",
+                                        style: .default) { [weak self] _ in
+            optionMenu.dismiss(animated: true, completion: nil)
+            let vc = GenerateKeysBuilder.build()
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        optionMenu.addAction(generateKey)
+        
+        let addKeyFromClipboard = UIAlertAction(title: "Add Key from Clipboard",
+                                                style: .default) { [weak self] _ -> Void in
+            self?.presenter.requestAddKey(UIPasteboard.general.string.orEmpty)
+            optionMenu.dismiss(animated: true)
+        }
+        optionMenu.addAction(addKeyFromClipboard)
+        
+        let cancel = UIAlertAction(title: "Cancel",
+                                   style: .cancel) { _ in
+            optionMenu.dismiss(animated: true)
+        }
+        optionMenu.addAction(cancel)
+        
+        present(optionMenu, animated: true)
     }
 }
 
@@ -51,6 +76,10 @@ private extension ListKeysViewController {
 extension ListKeysViewController: PresenterToViewListKeysProtocol {
     func reloadTableViewData() {
         tableView.reloadData()
+    }
+    
+    func showImportKeySuccessMessage(_ message: String) {
+        makeToast(message)
     }
 }
 

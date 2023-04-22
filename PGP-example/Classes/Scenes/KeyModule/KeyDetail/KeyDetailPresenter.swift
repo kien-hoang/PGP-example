@@ -56,16 +56,4 @@ private extension Key {
         guard let expirationDate = self.expirationDate else { return "Never" }
         return ISO8601DateFormatter().string(from: expirationDate)
     }
-    
-    func getKeyType() -> String {
-        var type = "None"
-        if self.isPublic && self.isSecret {
-            type = "Public & Private"
-        } else if self.isPublic {
-            type = "Public"
-        } else if self.isSecret {
-            type = "Private"
-        }
-        return type
-    }
 }

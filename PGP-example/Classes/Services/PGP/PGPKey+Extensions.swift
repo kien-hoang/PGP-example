@@ -31,4 +31,22 @@ extension Key {
             return nil
         }
     }
+    
+    func getShortFingerprint() -> String? {
+        guard let fingerprint = getFingerprint() else { return nil }
+        let shortFingerprint = Array(fingerprint)[0..<5] + " ... " + Array(fingerprint)[(fingerprint.count - 5)...]
+        return String(shortFingerprint)
+    }
+    
+    func getKeyType() -> String {
+        var type = "None"
+        if self.isPublic && self.isSecret {
+            type = "Public & Private"
+        } else if self.isPublic {
+            type = "Public"
+        } else if self.isSecret {
+            type = "Private"
+        }
+        return type
+    }
 }
