@@ -37,10 +37,6 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 
 - To install the app, clone the repository and open the `PGP-example.xcworkspace` file in Xcode.
 
-## Usage
-
-- \<Updating\>
-
 ## Security Audit
 
 The cryptographic library used by PGPro, [ObjectivePGP](https://objectivepgp.com/), has undergone a complete security audit from [Cure53](https://cure53.de/).
