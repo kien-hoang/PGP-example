@@ -27,6 +27,9 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 ## Features need to be updated in the future
 
 - [ ] Save keys to Core Data
+- [ ] Optimize UI: Add empty background UI for List Keys screen if it have no key in the app
+- [ ] Delete specific Key in List Keys screen
+- [ ] Delete all keys
 
 ## Requirements
 
