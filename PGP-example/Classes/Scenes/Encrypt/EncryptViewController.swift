@@ -60,6 +60,7 @@ private extension EncryptViewController {
 extension EncryptViewController: PresenterToViewEncryptProtocol {    
     func showEncryptedMessage(_ encryptedMessage: String) {
         encryptedMessageLabel.text = encryptedMessage
+        makeToast("Encrypt message success!")
     }
     
     func showReceiverPublicKey(fingerprint: String, typeString: String) {

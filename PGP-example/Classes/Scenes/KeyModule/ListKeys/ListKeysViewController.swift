@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MobileCoreServices
+import UniformTypeIdentifiers
 
 final class ListKeysViewController: BaseViewController {
     
@@ -44,7 +46,6 @@ private extension ListKeysViewController {
         let optionMenu = UIAlertController(title: nil,
                                            message: nil,
                                            preferredStyle: .actionSheet)
-        //        optionMenu.popoverPresentationController?.barButtonItem = sender
         
         let generateKey = UIAlertAction(title: "Generate Key Pair",
                                         style: .default) { [weak self] _ in
@@ -53,6 +54,13 @@ private extension ListKeysViewController {
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         optionMenu.addAction(generateKey)
+        
+        let importKeyFromFile = UIAlertAction(title: "Import Keys from File",
+                                              style: .default) { [weak self] _ in
+            self?.importKeysFilePicker()
+            optionMenu.dismiss(animated: true)
+        }
+        optionMenu.addAction(importKeyFromFile)
         
         let addKeyFromClipboard = UIAlertAction(title: "Add Key from Clipboard",
                                                 style: .default) { [weak self] _ -> Void in
@@ -87,13 +95,22 @@ extension ListKeysViewController: PresenterToViewListKeysProtocol {
 
 private extension ListKeysViewController {
     func setupUI() {
-        title = "List Keys"
+        navigationItem.title = "List Keys"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(addKeyButtonTapped))
         
         tableView.register(KeychainTableViewCell.self)
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    func importKeysFilePicker() {
+//        let supportedTypes: [UTType] = [.data]
+//        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes)
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [kUTTypeData as String], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = true
+        present(documentPicker, animated: true, completion: nil)
     }
 }
 
@@ -111,9 +128,19 @@ extension ListKeysViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension ListKeysViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = KeyDetailBuilder.build(key: presenter.keys[indexPath.row])
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+// MARK: - UIDocumentPickerDelegate
+
+extension ListKeysViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        presenter.requestDocumentPicker(didPickAt: urls)
     }
 }

@@ -163,6 +163,29 @@ final class PGPService: IPGPService {
         saveKeys(readKeys)
         return readKeys
     }
+    
+    @discardableResult
+    func importKey(_ fileUrl: URL) throws -> [Keychain] {
+        var readKeys: [Keychain] = []
+        readKeys = try ObjectivePGP.readKeys(fromPath: fileUrl.path)
+        for key in readKeys {
+            try keyIsSupported(key: key)
+        }
+        
+        saveKeys(readKeys)
+        return readKeys
+    }
+    
+    @discardableResult
+    func importKeys(fileUrls: [URL]) throws -> [Keychain] {
+        var keys: [Keychain] = []
+        for fileUrl in fileUrls {
+            let key = try importKey(fileUrl)
+            keys.append(contentsOf: key)
+        }
+        
+        return keys
+    }
 }
 
 // MARK: - Private

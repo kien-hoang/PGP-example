@@ -15,6 +15,7 @@ protocol ViewToPresenterListKeysProtocol {
     
     func requestNewListKeys()
     func requestAddKey(_ rawText: String)
+    func requestDocumentPicker(didPickAt urls: [URL])
 }
 
 // MARK: Presenter -> View

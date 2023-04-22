@@ -33,14 +33,17 @@ extension ListKeysPresenter: ViewToPresenterListKeysProtocol {
     func requestAddKey(_ rawText: String) {
         do {
             let importedKeys = try pgpService.importKey(rawText)
-            let isImportSuccess = !importedKeys.isEmpty
+            finishImportKey(!importedKeys.isEmpty)
             
-            if isImportSuccess {
-                requestNewListKeys()
-                view?.showImportKeySuccessMessage("Import success!")
-            } else {
-                view?.showImportKeySuccessMessage("Import failed!")
-            }
+        } catch {
+            view?.showError(error.localizedDescription)
+        }
+    }
+    
+    func requestDocumentPicker(didPickAt urls: [URL]) {
+        do {
+            let importedKeys = try pgpService.importKeys(fileUrls: urls)
+            finishImportKey(!importedKeys.isEmpty)
             
         } catch {
             view?.showError(error.localizedDescription)
@@ -56,5 +59,12 @@ extension ListKeysPresenter: ViewToPresenterListKeysProtocol {
 // MARK: - Private
 
 private extension ListKeysPresenter {
-    
+    func finishImportKey(_ isImportSuccess: Bool) {
+        if isImportSuccess {
+            requestNewListKeys()
+            view?.showImportKeySuccessMessage("Import success!")
+        } else {
+            view?.showImportKeySuccessMessage("Import failed!")
+        }
+    }
 }
