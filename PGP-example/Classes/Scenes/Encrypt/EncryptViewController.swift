@@ -77,7 +77,7 @@ extension EncryptViewController: PresenterToViewEncryptProtocol {
 
 private extension EncryptViewController {
     func setupUI() {
-        title = "Encrypt (+ Signing)"
+        navigationItem.title = "Encrypt (+ Signing)"
         
         let receiverPublicKeyTap = UITapGestureRecognizer(target: self, action: #selector(showListPublicKeys))
         receiverPublicKeyContainerView.isUserInteractionEnabled = true

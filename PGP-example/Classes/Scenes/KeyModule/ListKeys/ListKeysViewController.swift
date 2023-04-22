@@ -49,7 +49,7 @@ private extension ListKeysViewController {
         let generateKey = UIAlertAction(title: "Generate Key Pair",
                                         style: .default) { [weak self] _ in
             optionMenu.dismiss(animated: true, completion: nil)
-            let vc = GenerateKeysBuilder.build()
+            let vc = KeyGenerationBuilder.build()
             self?.navigationController?.pushViewController(vc, animated: true)
         }
         optionMenu.addAction(generateKey)

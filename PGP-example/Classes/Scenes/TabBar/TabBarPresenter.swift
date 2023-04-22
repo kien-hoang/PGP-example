@@ -25,9 +25,9 @@ enum TabBarType: Int, CaseIterable {
         case .verifySignature:
             return "Verify"
         case .encrypt:
-            return "Encrypt"
+            return "Encryption"
         case .decrypt:
-            return "Decrypt"
+            return "Decryption"
         case .settings:
             return "Settings"
         }

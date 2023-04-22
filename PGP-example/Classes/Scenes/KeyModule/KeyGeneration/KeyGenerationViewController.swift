@@ -1,5 +1,5 @@
 //
-//  GenerateKeysViewController.swift
+//  KeyGenerationViewController.swift
 //  DemoPGP
 //
 //  Created by Bradley Hoang on 19/04/2023.
@@ -9,7 +9,7 @@
 import UIKit
 import Toast_Swift
 
-final class GenerateKeysViewController: BaseViewController {
+final class KeyGenerationViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
@@ -20,7 +20,7 @@ final class GenerateKeysViewController: BaseViewController {
     
     // MARK: - Public Variable
     
-    var presenter: ViewToPresenterGenerateKeysProtocol!
+    var presenter: ViewToPresenterKeyGenerationProtocol!
     
     // MARK: - Private Variable
     
@@ -37,7 +37,7 @@ final class GenerateKeysViewController: BaseViewController {
 
 // MARK: - IBAction
 
-private extension GenerateKeysViewController {
+private extension KeyGenerationViewController {
     @IBAction func generatePairKeysButtonTapped(_ sender: Any) {
         presenter.requestGeneratePairKeys(email: emailTextField.text.orEmpty,
                                           passphrase: passphraseTextField.text.orEmpty)
@@ -56,7 +56,7 @@ private extension GenerateKeysViewController {
 
 // MARK: - PresenterToView
 
-extension GenerateKeysViewController: PresenterToViewGenerateKeysProtocol {
+extension KeyGenerationViewController: PresenterToViewKeyGenerationProtocol {
     func showPairKeys(publicKey: String?, privateKey: String?) {
         publicKeyLabel.text = publicKey
         privateKeyLabel.text = privateKey
@@ -66,7 +66,7 @@ extension GenerateKeysViewController: PresenterToViewGenerateKeysProtocol {
 
 // MARK: - Private
 
-private extension GenerateKeysViewController {
+private extension KeyGenerationViewController {
     func setupUI() {
         title = "Generate new Keychain"
     }

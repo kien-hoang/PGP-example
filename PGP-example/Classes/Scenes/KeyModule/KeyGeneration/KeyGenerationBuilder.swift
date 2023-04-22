@@ -1,5 +1,5 @@
 //
-//  GenerateKeysBuilder.swift
+//  KeyGenerationBuilder.swift
 //  DemoPGP
 //
 //  Created by Bradley Hoang on 19/04/2023.
@@ -8,13 +8,13 @@
 
 import Foundation
 
-final class GenerateKeysBuilder {
+final class KeyGenerationBuilder {
     
     private init() {}
     
-    static func build() -> GenerateKeysViewController {
-        let viewController = GenerateKeysViewController.initViewController()
-        let presenter = GenerateKeysPresenter(view: viewController,
+    static func build() -> KeyGenerationViewController {
+        let viewController = KeyGenerationViewController.initViewController()
+        let presenter = KeyGenerationPresenter(view: viewController,
                                               pgpService: PGPService())
         
         viewController.presenter = presenter

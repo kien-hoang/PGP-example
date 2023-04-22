@@ -1,5 +1,5 @@
 //
-//  GenerateKeysPresenter.swift
+//  KeyGenerationPresenter.swift
 //  DemoPGP
 //
 //  Created by Bradley Hoang on 19/04/2023.
@@ -9,18 +9,18 @@
 import Foundation
 import ObjectivePGP
 
-final class GenerateKeysPresenter {
+final class KeyGenerationPresenter {
     
     // MARK: - Public Variable
     
     // MARK: - Private Variable
     
-    private weak var view: PresenterToViewGenerateKeysProtocol?
+    private weak var view: PresenterToViewKeyGenerationProtocol?
     private let pgpService: PGPService
     
     // MARK: - Lifecycle
     
-    init(view: PresenterToViewGenerateKeysProtocol, pgpService: PGPService) {
+    init(view: PresenterToViewKeyGenerationProtocol, pgpService: PGPService) {
         self.view = view
         self.pgpService = pgpService
     }
@@ -28,7 +28,7 @@ final class GenerateKeysPresenter {
 
 // MARK: - ViewToPresenter
 
-extension GenerateKeysPresenter: ViewToPresenterGenerateKeysProtocol {
+extension KeyGenerationPresenter: ViewToPresenterKeyGenerationProtocol {
     func requestGeneratePairKeys(email: String, passphrase: String) {
         view?.showLoading()
         DispatchQueue.global().async {
@@ -47,6 +47,6 @@ extension GenerateKeysPresenter: ViewToPresenterGenerateKeysProtocol {
 
 // MARK: - Private
 
-private extension GenerateKeysPresenter {
+private extension KeyGenerationPresenter {
     
 }
