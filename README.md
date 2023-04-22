@@ -19,11 +19,9 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 | List Keys | Generate New Key  | Key Detail  |
 | ------------ | ------------ | ------------ |
 | <img src="images/app-1.png" height="480"> | <img src="images/app-2.png" height="480"> | <img src="images/app-3.png" height="480"> |
-| Signing | Verify Signing  |
-| ------------ | ------------ |
-| <img src="images/app-4.png" height="480"> | <img src="images/app-5.png" height="480"> |
+| Signing | Verify Signing  |  |
+| <img src="images/app-4.png" height="480"> | <img src="images/app-5.png" height="480"> |  |
 | Encryption | Decryption  | Settings  |
-| ------------ | ------------ | ------------ |
 | <img src="images/app-6.png" height="480"> | <img src="images/app-7.png" height="480"> | <img src="images/app-8.png" height="480"> |
     
 ## Requirements
