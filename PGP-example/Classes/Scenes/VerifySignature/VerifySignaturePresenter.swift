@@ -36,7 +36,7 @@ extension VerifySignaturePresenter: ViewToPresenterVerifySignatureProtocol {
         }
         
         do {
-            try pgpService.verify(signedMessage, key: signerPublicKey)
+            try pgpService.verifySignature(signedMessage, key: signerPublicKey)
             view?.showVerifySignatureSuccessMessage("Verify signature success!")
         } catch {
             view?.showError("Verify signature failed!")

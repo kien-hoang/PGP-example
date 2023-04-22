@@ -150,16 +150,7 @@ final class PGPService: IPGPService {
     }
     
     func verifySignature(_ signature: String, key: Keychain) throws {
-        guard let range = signature.range(of: #"-----BEGIN PGP MESSAGE-----(.|\s)*-----END PGP MESSAGE-----"#,
-                                        options: .regularExpression) else {
-            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
-        }
-        
-        let signature = String(signature[range])
-        guard let signatureData = signature.data(using: .ascii) else {
-            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
-        }
-        
+        let signatureData = try Armor.readArmored(signature)
         try ObjectivePGP.verifySignature(signatureData, using: [key])
     }
     
