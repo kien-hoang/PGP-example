@@ -24,6 +24,10 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 | Encryption | Decryption  | Settings  |
 | <img src="images/app-6.png" height="480"> | <img src="images/app-7.png" height="480"> | <img src="images/app-8.png" height="480"> |
     
+## Features need to be updated in the future
+
+- [ ] Save keys to Core Data
+
 ## Requirements
 
 - iOS 15.0+
