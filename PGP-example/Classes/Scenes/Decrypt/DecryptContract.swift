@@ -10,13 +10,16 @@ import Foundation
 
 // MARK: View -> Presenter
 
-protocol ViewToPresenterDecryptProtocol {
+protocol ViewToPresenterDecryptProtocol: KeySelectionDelegate {
     func requestDecryptTheMessage(_ encryptedMessage: String, passphrase: String)
+    func requestResetSignerPublicKey()
 }
 
 // MARK: Presenter -> View
 
 protocol PresenterToViewDecryptProtocol: BaseViewProtocol {
-    func showSelectedKeyInformation(id: String, fingerprint: String)
+    func showReceiverPrivateKey(fingerprint: String, typeString: String)
+    func showSignerPublicKey(fingerprint: String, typeString: String)
+    
     func showDecryptedMessage(_ decryptedMessage: String)
 }

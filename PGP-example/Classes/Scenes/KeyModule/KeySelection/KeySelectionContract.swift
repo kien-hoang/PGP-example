@@ -23,3 +23,9 @@ protocol PresenterToViewKeySelectionProtocol: AnyObject {
     func updateUI(with title: String)
     func reloadTableViewData()
 }
+
+// MARK: - KeySelectionDelegate
+
+protocol KeySelectionDelegate: AnyObject {
+    func keySectionDidSelectKeychain(_ keychain: Keychain, type: KeychainType)
+}

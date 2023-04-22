@@ -12,11 +12,15 @@ final class DecryptViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
-    @IBOutlet private weak var selectedKeyContainerView: UIStackView!
-    @IBOutlet private weak var selectedKeyIdLabel: UILabel!
-    @IBOutlet private weak var selectedFingerprintLabel: UILabel!
-    
+    @IBOutlet private weak var receiverPrivateKeyContainerView: UIStackView!
+    @IBOutlet private weak var receiverPrivateKeyFingerprintLabel: UILabel!
+    @IBOutlet private weak var receiverPrivateKeyTypeLabel: UILabel!
     @IBOutlet private weak var passphraseTextField: UITextField!
+    
+    @IBOutlet private weak var signerPublicKeyContainerView: UIStackView!
+    @IBOutlet private weak var signerPublicKeyFingerprintLabel: UILabel!
+    @IBOutlet private weak var signerPublicKeyTypeLabel: UILabel!
+    
     @IBOutlet private weak var encryptedMessageTextView: UITextView!
     @IBOutlet private weak var decryptedMessageLabel: UILabel!
     
@@ -55,13 +59,18 @@ private extension DecryptViewController {
 // MARK: - PresenterToView
 
 extension DecryptViewController: PresenterToViewDecryptProtocol {
-    func showSelectedKeyInformation(id: String, fingerprint: String) {
-        selectedKeyIdLabel.text = id
-        selectedFingerprintLabel.text = fingerprint
-    }
-    
     func showDecryptedMessage(_ decryptedMessage: String) {
         decryptedMessageLabel.text = decryptedMessage
+    }
+    
+    func showReceiverPrivateKey(fingerprint: String, typeString: String) {
+        receiverPrivateKeyFingerprintLabel.text = fingerprint
+        receiverPrivateKeyTypeLabel.text = typeString
+    }
+    
+    func showSignerPublicKey(fingerprint: String, typeString: String) {
+        signerPublicKeyFingerprintLabel.text = fingerprint
+        signerPublicKeyTypeLabel.text = typeString
     }
 }
 
@@ -69,15 +78,32 @@ extension DecryptViewController: PresenterToViewDecryptProtocol {
 
 private extension DecryptViewController {
     func setupUI() {
-        title = "Decrypt"
+        navigationItem.title = "Decrypt (+ Verify)"
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(showListKeys))
-        selectedKeyContainerView.isUserInteractionEnabled = true
-        selectedKeyContainerView.addGestureRecognizer(tap)
+        let receiverPrivateKeyTap = UITapGestureRecognizer(target: self, action: #selector(showListPrivateKeys))
+        receiverPrivateKeyContainerView.isUserInteractionEnabled = true
+        receiverPrivateKeyContainerView.addGestureRecognizer(receiverPrivateKeyTap)
+        
+        let signerPublicKeyTap = UITapGestureRecognizer(target: self, action: #selector(didTapSignerPublicKeyBlock))
+        signerPublicKeyContainerView.isUserInteractionEnabled = true
+        signerPublicKeyContainerView.addGestureRecognizer(signerPublicKeyTap)
     }
     
-    @objc func showListKeys() {
-//        let vc = SelectionKeyBuilder.build(delegate: presenter)
-//        navigationController?.pushViewController(vc, animated: true)
+    @objc func showListPrivateKeys() {
+        let vc = KeySelectionBuilder.build(keychainType: .privateKey,
+                                           delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func didTapSignerPublicKeyBlock() {
+        presenter.requestResetSignerPublicKey()
+        showSignerPublicKey(fingerprint: "---", typeString: "---")
+        showListPublicKeys()
+    }
+    
+    func showListPublicKeys() {
+        let vc = KeySelectionBuilder.build(keychainType: .publicKey,
+                                           delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

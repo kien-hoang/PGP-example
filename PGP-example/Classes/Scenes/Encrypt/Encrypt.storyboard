@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="XHx-RN-dSB">
-                                <rect key="frame" x="20" y="68" width="374" height="534.5"/>
+                                <rect key="frame" x="20" y="48" width="374" height="534.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="uZF-Wm-XWO">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
@@ -232,7 +232,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="XHx-RN-dSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="3Xw-DB-Ln1"/>
+                            <constraint firstItem="XHx-RN-dSB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Xw-DB-Ln1"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XHx-RN-dSB" secondAttribute="trailing" constant="20" id="VXb-Km-4jd"/>
                             <constraint firstItem="XHx-RN-dSB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="nx2-7h-7b5"/>
                         </constraints>

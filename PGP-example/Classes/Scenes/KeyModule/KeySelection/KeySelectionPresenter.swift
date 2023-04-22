@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol KeySelectionDelegate: AnyObject {
-    func keySectionDidSelectKeychain(_ keychain: Keychain, type: KeychainType)
-}
-
 final class KeySelectionPresenter {
     
     // MARK: - Public Variable

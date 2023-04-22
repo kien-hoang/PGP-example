@@ -48,7 +48,7 @@ extension ListKeysPresenter: ViewToPresenterListKeysProtocol {
     }
     
     func requestNewListKeys() {
-        keys = pgpService.getAllKeys()
+        keys = pgpService.exportKeys(of: .both)
         view?.reloadTableViewData()
     }
 }

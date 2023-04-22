@@ -18,7 +18,8 @@ final class DecryptPresenter {
     private weak var view: PresenterToViewDecryptProtocol?
     private let pgpService: PGPService
     
-    private var selectedKey: Key?
+    private var receiverPrivateKey: Keychain?
+    private var signerPublicKey: Keychain?
     
     // MARK: - Lifecycle
     
@@ -32,27 +33,46 @@ final class DecryptPresenter {
 
 extension DecryptPresenter: ViewToPresenterDecryptProtocol {
     func requestDecryptTheMessage(_ encryptedMessage: String, passphrase: String) {
-        guard let selectedKey = selectedKey else {
-            view?.showError("Need select key first")
+        guard let receiverPrivateKey = receiverPrivateKey else {
+            view?.showError("Need receiver's public key!")
             return
         }
         
         do {
             let decryptedMessage = try pgpService.decrypt(encryptedMessage: encryptedMessage,
-                                                          andVerifySignature: true,
-                                                          key: selectedKey,
+                                                          receiverPrivateKey: receiverPrivateKey,
+                                                          signerPublicKey: signerPublicKey,
                                                           passphrase: passphrase)
             view?.showDecryptedMessage(decryptedMessage)
             
         } catch {
             view?.showError(error.localizedDescription)
         }
-        
+    }
+    
+    func requestResetSignerPublicKey() {
+        signerPublicKey = nil
     }
 }
 
-// MARK: - Private
+// MARK: - KeySelectionDelegate
 
-private extension DecryptPresenter {
-    
+extension DecryptPresenter {
+    func keySectionDidSelectKeychain(_ keychain: Keychain, type: KeychainType) {
+        let fingerprint = "Fingerprint: \(keychain.getShortFingerprint() ?? "not found")"
+        let typeString = "Type: \(keychain.getKeyType())"
+        
+        switch type {
+        case .privateKey:
+            receiverPrivateKey = keychain
+            view?.showReceiverPrivateKey(fingerprint: fingerprint, typeString: typeString)
+            
+        case .publicKey:
+            signerPublicKey = keychain
+            view?.showSignerPublicKey(fingerprint: fingerprint, typeString: typeString)
+            
+        case .both:
+            fatalError("Must not this case")
+        }
+    }
 }
