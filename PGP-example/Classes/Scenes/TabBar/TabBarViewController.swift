@@ -68,14 +68,14 @@ private extension TabBarViewController {
                 viewController.tabBarItem = UITabBarItem(title: $0.title,
                                                          image: UIImage(systemName: "signature"),
                                                          tag: 1)
-                return viewController
+                return UINavigationController(rootViewController: viewController)
                 
             case .verifySignature:
                 let viewController = VerifySignatureBuilder.build()
                 viewController.tabBarItem = UITabBarItem(title: $0.title,
                                                          image: UIImage(systemName: "square.and.pencil"),
                                                          tag: 2)
-                return viewController
+                return UINavigationController(rootViewController: viewController)
                 
             case .encrypt:
                 let viewController = EncryptBuilder.build()
@@ -88,6 +88,13 @@ private extension TabBarViewController {
                 let viewController = DecryptBuilder.build()
                 viewController.tabBarItem = UITabBarItem(title: $0.title,
                                                          image: UIImage(systemName: "lock.open"),
+                                                         tag: 3)
+                return UINavigationController(rootViewController: viewController)
+                
+            case .settings:
+                let viewController = SettingsBuilder.build()
+                viewController.tabBarItem = UITabBarItem(title: $0.title,
+                                                         image: UIImage(systemName: "gear"),
                                                          tag: 3)
                 return UINavigationController(rootViewController: viewController)
             }

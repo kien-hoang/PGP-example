@@ -14,6 +14,7 @@ enum TabBarType: Int, CaseIterable {
     case verifySignature
     case encrypt
     case decrypt
+    case settings
     
     var title: String {
         switch self {
@@ -27,6 +28,8 @@ enum TabBarType: Int, CaseIterable {
             return "Encrypt"
         case .decrypt:
             return "Decrypt"
+        case .settings:
+            return "Settings"
         }
     }
 }
@@ -35,7 +38,7 @@ final class TabBarPresenter {
     
     // MARK: - Public Variable
     
-    var tabBarItems: [TabBarType] = [.generateKeys, .signing, .encrypt, .decrypt]
+    var tabBarItems: [TabBarType] = [.generateKeys, .signing, .encrypt, .decrypt, .settings]
     
     // MARK: - Private Variable
     

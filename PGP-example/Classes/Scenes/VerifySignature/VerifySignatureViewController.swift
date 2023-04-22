@@ -8,6 +8,8 @@
 
 import UIKit
 
+// FIXME: Archived
+
 final class VerifySignatureViewController: BaseViewController {
     
     // MARK: - IBOutlet

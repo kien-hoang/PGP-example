@@ -45,6 +45,7 @@ extension DecryptPresenter: ViewToPresenterDecryptProtocol {
         
         do {
             let decryptedMessage = try pgpService.decrypt(encryptedMessage: encryptedMessage,
+                                                          andVerifySignature: true,
                                                           key: selectedKey,
                                                           passphrase: passphrase)
             view?.showDecryptedMessage(decryptedMessage)

@@ -14,7 +14,8 @@ final class SigningBuilder {
     
     static func build() -> SigningViewController {
         let viewController = SigningViewController.initViewController()
-        let presenter = SigningPresenter(view: viewController)
+        let presenter = SigningPresenter(view: viewController,
+                                         pgpService: PGPService())
         
         viewController.presenter = presenter
         

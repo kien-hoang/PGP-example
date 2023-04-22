@@ -28,11 +28,7 @@ final class VerifySignaturePresenter {
 
 extension VerifySignaturePresenter: ViewToPresenterVerifySignatureProtocol {
     func requestVerifySignature(_ signedMessage: String) {
-        guard let signedMessageData = try? Armor.readArmored(signedMessage) else { return }
-        // FIXME: Testing purpose
-        try? ObjectivePGP.verify(signedMessageData, withSignature: nil, using: [PGPGlobal.shared.key])
-        let data = try? ObjectivePGP.decrypt(signedMessageData, andVerifySignature: false, using: [PGPGlobal.shared.key])
-        let message = Armor.armored(data ?? Data(), as: .message)
+        
     }
 }
 
