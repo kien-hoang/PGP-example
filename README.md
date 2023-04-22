@@ -39,6 +39,10 @@ Thereby it uses software developed by the [OpenSSL](http://www.openssl.org/) Pro
 
 ## Contribution
 
+You are welcome to contribute. Please create a [Pull Request](https://github.com/kien-hoang/PGP-example/pulls).
+
+## Author
+
 <a href="https://www.linkedin.com/in/kien-ht/">Hoàng Trọng Kiên (Bradley)</a>
 
 ## Reference
