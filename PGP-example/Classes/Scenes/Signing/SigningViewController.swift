@@ -82,7 +82,7 @@ private extension SigningViewController {
     }
     
     @objc func showListKeys() {
-        let vc = SelectionKeyBuilder.build(delegate: presenter)
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = SelectionKeyBuilder.build(delegate: presenter)
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }

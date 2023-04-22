@@ -31,12 +31,6 @@ final class DecryptPresenter {
 // MARK: - ViewToPresenter
 
 extension DecryptPresenter: ViewToPresenterDecryptProtocol {
-    func encryptListKeysDidSelectKey(_ key: Keychain) {
-        selectedKey = key
-        view?.showSelectedKeyInformation(id: key.keyID.shortIdentifier,
-                                         fingerprint: key.getFingerprint() ?? "---")
-    }
-    
     func requestDecryptTheMessage(_ encryptedMessage: String, passphrase: String) {
         guard let selectedKey = selectedKey else {
             view?.showError("Need select key first")

@@ -63,13 +63,6 @@
 		138F9D1B29F2D08F00B9A248 /* KeyDetailBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D1629F2D08F00B9A248 /* KeyDetailBuilder.swift */; };
 		138F9D1E29F2D99400B9A248 /* KeyDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D1D29F2D99400B9A248 /* KeyDetailViewModel.swift */; };
 		138F9D2029F2E04900B9A248 /* PGPKey+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D1F29F2E04900B9A248 /* PGPKey+Extensions.swift */; };
-		138F9D2829F2E73D00B9A248 /* SelectionKey.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D2329F2E73D00B9A248 /* SelectionKey.storyboard */; };
-		138F9D2929F2E73D00B9A248 /* SelectionKeyContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D2429F2E73D00B9A248 /* SelectionKeyContract.swift */; };
-		138F9D2A29F2E73D00B9A248 /* SelectionKeyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D2529F2E73D00B9A248 /* SelectionKeyPresenter.swift */; };
-		138F9D2B29F2E73D00B9A248 /* SelectionKeyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D2629F2E73D00B9A248 /* SelectionKeyViewController.swift */; };
-		138F9D2C29F2E73D00B9A248 /* SelectionKeyBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D2729F2E73D00B9A248 /* SelectionKeyBuilder.swift */; };
-		138F9D3029F2E89700B9A248 /* EncryptListKeysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D2E29F2E89700B9A248 /* EncryptListKeysCell.swift */; };
-		138F9D3129F2EAEC00B9A248 /* EncryptListKeysCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D2F29F2E89700B9A248 /* EncryptListKeysCell.xib */; };
 		138F9D3829F2EF7500B9A248 /* Decrypt.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 138F9D3329F2EF7500B9A248 /* Decrypt.storyboard */; };
 		138F9D3929F2EF7500B9A248 /* DecryptContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D3429F2EF7500B9A248 /* DecryptContract.swift */; };
 		138F9D3A29F2EF7500B9A248 /* DecryptPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 138F9D3529F2EF7500B9A248 /* DecryptPresenter.swift */; };
@@ -149,13 +142,6 @@
 		138F9D1629F2D08F00B9A248 /* KeyDetailBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailBuilder.swift; sourceTree = "<group>"; };
 		138F9D1D29F2D99400B9A248 /* KeyDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyDetailViewModel.swift; sourceTree = "<group>"; };
 		138F9D1F29F2E04900B9A248 /* PGPKey+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PGPKey+Extensions.swift"; sourceTree = "<group>"; };
-		138F9D2329F2E73D00B9A248 /* SelectionKey.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectionKey.storyboard; sourceTree = "<group>"; };
-		138F9D2429F2E73D00B9A248 /* SelectionKeyContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionKeyContract.swift; sourceTree = "<group>"; };
-		138F9D2529F2E73D00B9A248 /* SelectionKeyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionKeyPresenter.swift; sourceTree = "<group>"; };
-		138F9D2629F2E73D00B9A248 /* SelectionKeyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionKeyViewController.swift; sourceTree = "<group>"; };
-		138F9D2729F2E73D00B9A248 /* SelectionKeyBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionKeyBuilder.swift; sourceTree = "<group>"; };
-		138F9D2E29F2E89700B9A248 /* EncryptListKeysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncryptListKeysCell.swift; sourceTree = "<group>"; };
-		138F9D2F29F2E89700B9A248 /* EncryptListKeysCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EncryptListKeysCell.xib; sourceTree = "<group>"; };
 		138F9D3329F2EF7500B9A248 /* Decrypt.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Decrypt.storyboard; sourceTree = "<group>"; };
 		138F9D3429F2EF7500B9A248 /* DecryptContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptContract.swift; sourceTree = "<group>"; };
 		138F9D3529F2EF7500B9A248 /* DecryptPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecryptPresenter.swift; sourceTree = "<group>"; };
@@ -238,7 +224,6 @@
 				138F9CD929F03BA700B9A248 /* Signing */,
 				138F9CF129F1991900B9A248 /* Encrypt */,
 				138F9D3229F2EF6100B9A248 /* Decrypt */,
-				138F9D2229F2E70E00B9A248 /* SelectionKey */,
 				138F9CE629F0442500B9A248 /* VerifySignature */,
 				138F9D3D29F3872800B9A248 /* Settings */,
 				138F9C9729F03B4B00B9A248 /* TabBar */,
@@ -444,28 +429,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		138F9D2229F2E70E00B9A248 /* SelectionKey */ = {
-			isa = PBXGroup;
-			children = (
-				138F9D2D29F2E89700B9A248 /* Cell */,
-				138F9D2329F2E73D00B9A248 /* SelectionKey.storyboard */,
-				138F9D2429F2E73D00B9A248 /* SelectionKeyContract.swift */,
-				138F9D2529F2E73D00B9A248 /* SelectionKeyPresenter.swift */,
-				138F9D2629F2E73D00B9A248 /* SelectionKeyViewController.swift */,
-				138F9D2729F2E73D00B9A248 /* SelectionKeyBuilder.swift */,
-			);
-			path = SelectionKey;
-			sourceTree = "<group>";
-		};
-		138F9D2D29F2E89700B9A248 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-				138F9D2E29F2E89700B9A248 /* EncryptListKeysCell.swift */,
-				138F9D2F29F2E89700B9A248 /* EncryptListKeysCell.xib */,
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		138F9D3229F2EF6100B9A248 /* Decrypt */ = {
 			isa = PBXGroup;
 			children = (
@@ -606,12 +569,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				138F9D3829F2EF7500B9A248 /* Decrypt.storyboard in Resources */,
-				138F9D2829F2E73D00B9A248 /* SelectionKey.storyboard in Resources */,
 				138F9CE529F03E7600B9A248 /* Signing.storyboard in Resources */,
 				138F9D0B29F2C15B00B9A248 /* KeychainTableViewCell.xib in Resources */,
 				138F9CC029F03B4C00B9A248 /* GenerateKeys.storyboard in Resources */,
 				138F9D5629F3C8F600B9A248 /* KeySelection.storyboard in Resources */,
-				138F9D3129F2EAEC00B9A248 /* EncryptListKeysCell.xib in Resources */,
 				138F9D1729F2D08F00B9A248 /* KeyDetail.storyboard in Resources */,
 				138F9CD729F03B5400B9A248 /* Assets.xcassets in Resources */,
 				138F9CD829F03B5400B9A248 /* LaunchScreen.storyboard in Resources */,
@@ -672,12 +633,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				138F9CE129F03BBD00B9A248 /* SigningPresenter.swift in Sources */,
-				138F9D2B29F2E73D00B9A248 /* SelectionKeyViewController.swift in Sources */,
 				138F9CC829F03B4C00B9A248 /* UICollectionViewCell+Extensions.swift in Sources */,
 				138F9D3929F2EF7500B9A248 /* DecryptContract.swift in Sources */,
-				138F9D2C29F2E73D00B9A248 /* SelectionKeyBuilder.swift in Sources */,
 				138F9D0A29F2C15B00B9A248 /* KeychainTableViewCell.swift in Sources */,
-				138F9D2929F2E73D00B9A248 /* SelectionKeyContract.swift in Sources */,
 				138F9CCC29F03B4C00B9A248 /* Optional+Extensions.swift in Sources */,
 				138F9CC929F03B4C00B9A248 /* UICollectionView+Extensions.swift in Sources */,
 				138F9CB729F03B4C00B9A248 /* TabBarPresenter.swift in Sources */,
@@ -708,7 +666,6 @@
 				138F9D4429F3873700B9A248 /* SettingsContract.swift in Sources */,
 				138F9CEE29F0445000B9A248 /* VerifySignaturePresenter.swift in Sources */,
 				138F9D5729F3C8F600B9A248 /* KeySelectionContract.swift in Sources */,
-				138F9D3029F2E89700B9A248 /* EncryptListKeysCell.swift in Sources */,
 				138F9CED29F0445000B9A248 /* VerifySignatureContract.swift in Sources */,
 				138F9D1829F2D08F00B9A248 /* KeyDetailContract.swift in Sources */,
 				138F9CC629F03B4C00B9A248 /* String+Extensions.swift in Sources */,
@@ -735,7 +692,6 @@
 				138F9CC229F03B4C00B9A248 /* AppDelegate.swift in Sources */,
 				138F9D5829F3C8F600B9A248 /* KeySelectionPresenter.swift in Sources */,
 				138F9D5929F3C8F600B9A248 /* KeySelectionViewController.swift in Sources */,
-				138F9D2A29F2E73D00B9A248 /* SelectionKeyPresenter.swift in Sources */,
 				138F9CB929F03B4C00B9A248 /* TabBarBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

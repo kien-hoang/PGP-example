@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: View -> Presenter
 
-protocol ViewToPresenterSigningProtocol: SelectionKeyPresenterDelegate {
+protocol ViewToPresenterSigningProtocol {
     func requestSigningMessage(_ message: String, passphrase: String)
 }
 

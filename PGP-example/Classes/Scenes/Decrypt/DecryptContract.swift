@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: View -> Presenter
 
-protocol ViewToPresenterDecryptProtocol: SelectionKeyPresenterDelegate {
+protocol ViewToPresenterDecryptProtocol {
     func requestDecryptTheMessage(_ encryptedMessage: String, passphrase: String)
 }
 
