@@ -6,6 +6,14 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 ## Features :heart:
 - Architecture: MVP
 - Dependency Injection
+
+## Application
+| List Keys | Generate New Key  | Signing  |
+| ------------ | ------------ | ------------ |
+| <img src="images/app-1.png" height="480"> | <img src="images/app-2.png" height="480"> | <img src="images/app-3.png" height="480"> |
+| Encrypt | Decrypt  | Settings  |
+| ------------ | ------------ | ------------ |
+| <img src="images/app-4.png" height="480"> | <img src="images/app-5.png" height="480"> | <img src="images/app-6.png" height="480"> |
     
 ## Requirements
 
@@ -20,6 +28,15 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 
 - \<Updating\>
 
+## Security Audit
+
+The cryptographic library used by PGPro, [ObjectivePGP](https://objectivepgp.com/), has undergone a complete security audit from [Cure53](https://cure53.de/).
+
+## Acknowledgment
+
+This project uses the [ObjectivePGP](https://objectivepgp.com/) library developed by [Marcin Krzyżanowski](https://krzyzanowskim.com/).
+Thereby it uses software developed by the [OpenSSL](http://www.openssl.org/) Project for use in the [OpenSSL Toolkit](https://www.openssl.org/).
+
 ## Contribution
 
 <a href="https://www.linkedin.com/in/kien-ht/">Hoàng Trọng Kiên (Bradley)</a>
@@ -27,3 +44,5 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 ## Reference
 
 - https://vi.wikipedia.org/wiki/Pretty_Good_Privacy
+- https://github.com/lucanaef/PGPro
+- https://github.com/krzyzanowskim/ObjectivePGP
