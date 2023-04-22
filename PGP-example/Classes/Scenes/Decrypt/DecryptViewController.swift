@@ -61,6 +61,7 @@ private extension DecryptViewController {
 extension DecryptViewController: PresenterToViewDecryptProtocol {
     func showDecryptedMessage(_ decryptedMessage: String) {
         decryptedMessageLabel.text = decryptedMessage
+        makeToast("Decrypt the message success!")
     }
     
     func showReceiverPrivateKey(fingerprint: String, typeString: String) {

@@ -34,7 +34,7 @@ final class DecryptPresenter {
 extension DecryptPresenter: ViewToPresenterDecryptProtocol {
     func requestDecryptTheMessage(_ encryptedMessage: String, passphrase: String) {
         guard let receiverPrivateKey = receiverPrivateKey else {
-            view?.showError("Need receiver's public key!")
+            view?.showError("Need receiver's private key!")
             return
         }
         

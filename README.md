@@ -4,16 +4,27 @@
 This is an example project demonstrating how to use PGP encryption and decryption in an iOS app. It uses the Objective-C implementation of the OpenPGP standard, OpenPGP.framework.
 
 ## Features :heart:
-- Architecture: MVP
-- Dependency Injection
+- Manage Keychain:
+  - Generate new keys: public and private keys
+  - Import key from local file url
+  - Import key from clipboard
+- Signing the message with private key, output with the signature
+- Verify if signature was signed with one of the given keys.
+- Encrypt data
+- Decrypt PGP encrypted data
+- Others:
+  - Export keys to local files (*.gpg)
 
 ## Application
-| List Keys | Generate New Key  | Signing  |
+| List Keys | Generate New Key  | Key Detail  |
 | ------------ | ------------ | ------------ |
 | <img src="images/app-1.png" height="480"> | <img src="images/app-2.png" height="480"> | <img src="images/app-3.png" height="480"> |
-| Encrypt | Decrypt  | Settings  |
+| Signing | Verify Signing  |
+| ------------ | ------------ |
+| <img src="images/app-4.png" height="480"> | <img src="images/app-5.png" height="480"> |
+| Encryption | Decryption  | Settings  |
 | ------------ | ------------ | ------------ |
-| <img src="images/app-4.png" height="480"> | <img src="images/app-5.png" height="480"> | <img src="images/app-6.png" height="480"> |
+| <img src="images/app-6.png" height="480"> | <img src="images/app-7.png" height="480"> | <img src="images/app-8.png" height="480"> |
     
 ## Requirements
 
