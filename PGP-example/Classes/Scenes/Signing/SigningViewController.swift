@@ -59,9 +59,9 @@ private extension SigningViewController {
 // MARK: - PresenterToView
 
 extension SigningViewController: PresenterToViewSigningProtocol {
-    func showSelectedKeyInformation(id: String, fingerprint: String) {
-        selectedKeyIdLabel.text = id
-        selectedFingerprintLabel.text = fingerprint
+    func showSelectedKeyInformation(fingerprint: String, typeString: String) {
+        selectedKeyIdLabel.text = fingerprint
+        selectedFingerprintLabel.text = typeString
     }
     
     func showSignedMessage(_ signedMessage: String) {
@@ -82,7 +82,8 @@ private extension SigningViewController {
     }
     
     @objc func showListKeys() {
-//        let vc = SelectionKeyBuilder.build(delegate: presenter)
-//        navigationController?.pushViewController(vc, animated: true)
+        let vc = KeySelectionBuilder.build(keychainType: .privateKey,
+                                           delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

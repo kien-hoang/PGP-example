@@ -30,13 +30,7 @@ final class SigningPresenter {
 
 // MARK: - ViewToPresenter
 
-extension SigningPresenter: ViewToPresenterSigningProtocol {
-    func encryptListKeysDidSelectKey(_ key: Keychain) {
-        selectedKey = key
-        view?.showSelectedKeyInformation(id: key.keyID.shortIdentifier,
-                                         fingerprint: key.getFingerprint() ?? "---")
-    }
-    
+extension SigningPresenter: ViewToPresenterSigningProtocol {    
     func requestSigningMessage(_ message: String, passphrase: String) {
         guard let selectedKey = selectedKey else {
             view?.showError("Need select key first")
@@ -53,8 +47,14 @@ extension SigningPresenter: ViewToPresenterSigningProtocol {
     }
 }
 
-// MARK: - Private
+// MARK: - KeySelectionDelegate
 
-private extension SigningPresenter {
-    
+extension SigningPresenter {
+    func keySectionDidSelectKeychain(_ keychain: Keychain, type: KeychainType) {
+        let fingerprint = "Fingerprint: \(keychain.getShortFingerprint() ?? "not found")"
+        let typeString = "Type: \(keychain.getKeyType())"
+        
+        selectedKey = keychain
+        view?.showSelectedKeyInformation(fingerprint: fingerprint, typeString: typeString)
+    }
 }

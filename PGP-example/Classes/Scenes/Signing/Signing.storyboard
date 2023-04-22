@@ -69,7 +69,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="bradley" borderStyle="roundedRect" placeholder="Input passphrase..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4a-9r-lhl">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Input passphrase..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v4a-9r-lhl">
                                                 <rect key="frame" x="0.0" y="28.333333333333343" width="353" height="45"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="45" id="bQo-l7-xzn"/>
@@ -112,7 +112,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qJz-TX-FSr">
-                                        <rect key="frame" x="0.0" y="318.66666666666669" width="353" height="138.00000000000006"/>
+                                        <rect key="frame" x="0.0" y="318.66666666666669" width="353" height="138"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="clI-4q-ru9">
                                                 <rect key="frame" x="0.0" y="0.0" width="353" height="30"/>
