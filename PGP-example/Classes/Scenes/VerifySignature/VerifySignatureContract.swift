@@ -10,12 +10,13 @@ import Foundation
 
 // MARK: View -> Presenter
 
-protocol ViewToPresenterVerifySignatureProtocol {
+protocol ViewToPresenterVerifySignatureProtocol: KeySelectionDelegate {
     func requestVerifySignature(_ signedMessage: String)
 }
 
 // MARK: Presenter -> View
 
-protocol PresenterToViewVerifySignatureProtocol: AnyObject {
-    
+protocol PresenterToViewVerifySignatureProtocol: BaseViewProtocol {
+    func showSignerPublicKey(fingerprint: String, typeString: String)
+    func showVerifySignatureSuccessMessage(_ message: String)
 }

@@ -14,7 +14,8 @@ final class VerifySignatureBuilder {
     
     static func build() -> VerifySignatureViewController {
         let viewController = VerifySignatureViewController.initViewController()
-        let presenter = VerifySignaturePresenter(view: viewController)
+        let presenter = VerifySignaturePresenter(view: viewController,
+                                                 pgpService: PGPService())
         
         viewController.presenter = presenter
         

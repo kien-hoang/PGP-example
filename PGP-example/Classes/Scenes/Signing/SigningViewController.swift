@@ -53,6 +53,7 @@ private extension SigningViewController {
     
     @IBAction func copySignedMessageButtonTapped(_ sender: Any) {
         UIPasteboard.general.string = signedMessageLabel.text
+        makeToast("Copy signed message success!")
     }
 }
 

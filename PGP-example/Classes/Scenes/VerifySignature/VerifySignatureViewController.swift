@@ -8,15 +8,15 @@
 
 import UIKit
 
-// FIXME: Archived
-
 final class VerifySignatureViewController: BaseViewController {
     
     // MARK: - IBOutlet
     
+    @IBOutlet private weak var signerPublicKeyContainerView: UIStackView!
+    @IBOutlet private weak var signerPublicKeyFingerprintLabel: UILabel!
+    @IBOutlet private weak var signerPublicKeyTypeLabel: UILabel!
+    
     @IBOutlet private weak var signedMessageTextView: UITextView!
-    @IBOutlet private weak var publicKeyTextView: UITextView!
-    @IBOutlet private weak var rawMessageLabel: UILabel!
     
     // MARK: - Public Variable
     
@@ -31,9 +31,7 @@ final class VerifySignatureViewController: BaseViewController {
         setupUI()
     }
     
-    override func applyLocalization() {
-        
-    }
+    override func applyLocalization() {}
 }
 
 // MARK: - IBAction
@@ -46,22 +44,35 @@ private extension VerifySignatureViewController {
     @IBAction func pasteSignedMessageButtonTapped(_ sender: Any) {
         signedMessageTextView.text = UIPasteboard.general.string
     }
-    
-    @IBAction func pastePublicKeyFromClipboardButtonTapped(_ sender: Any) {
-        publicKeyTextView.text = UIPasteboard.general.string
-    }
 }
 
 // MARK: - PresenterToView
 
 extension VerifySignatureViewController: PresenterToViewVerifySignatureProtocol {
+    func showSignerPublicKey(fingerprint: String, typeString: String) {
+        signerPublicKeyFingerprintLabel.text = fingerprint
+        signerPublicKeyTypeLabel.text = typeString
+    }
     
+    func showVerifySignatureSuccessMessage(_ message: String) {
+        makeToast(message)
+    }
 }
 
 // MARK: - Private
 
 private extension VerifySignatureViewController {
     func setupUI() {
+        navigationItem.title = "Verify Signing"
         
+        let signerPublicKeyTap = UITapGestureRecognizer(target: self, action: #selector(showListPublicKeys))
+        signerPublicKeyContainerView.isUserInteractionEnabled = true
+        signerPublicKeyContainerView.addGestureRecognizer(signerPublicKeyTap)
+    }
+    
+    @objc func showListPublicKeys() {
+        let vc = KeySelectionBuilder.build(keychainType: .publicKey,
+                                           delegate: presenter)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

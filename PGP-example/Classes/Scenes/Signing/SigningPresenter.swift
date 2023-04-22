@@ -38,7 +38,10 @@ extension SigningPresenter: ViewToPresenterSigningProtocol {
         }
         
         do {
-            let signedString = try pgpService.sign(message: message, key: selectedKey, passphrase: passphrase)
+            let signedString = try pgpService.sign(message: message,
+                                                   detached: false,
+                                                   key: selectedKey,
+                                                   passphrase: passphrase)
             view?.showSignedMessage(signedString)
             
         } catch {

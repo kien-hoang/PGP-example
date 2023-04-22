@@ -131,17 +131,36 @@ final class PGPService: IPGPService {
 //        return decryptedMessage
 //    }
     
-    func sign(message: String, key: Keychain, passphrase: String) throws -> String {
+    func sign(message: String, detached: Bool, key: Keychain, passphrase: String) throws -> String {
         guard let messageData = message.data(using: .utf8) else {
             throw PGPError(_nsError: NSError(domain: "Invalid raw input message", code: -1))
         }
         
         let signedData = try ObjectivePGP.sign(messageData,
-                                               detached: false,
+                                               detached: detached,
                                                using: [key],
                                                passphraseForKey: { _ in return passphrase })
         let signedString = Armor.armored(signedData, as: .message)
         return signedString
+    }
+    
+    func verify(_ signedMessage: String, key: Keychain) throws {
+        let messageData = try Armor.readArmored(signedMessage)
+        try ObjectivePGP.verify(messageData, withSignature: nil, using: [key])
+    }
+    
+    func verifySignature(_ signature: String, key: Keychain) throws {
+        guard let range = signature.range(of: #"-----BEGIN PGP MESSAGE-----(.|\s)*-----END PGP MESSAGE-----"#,
+                                        options: .regularExpression) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
+        }
+        
+        let signature = String(signature[range])
+        guard let signatureData = signature.data(using: .ascii) else {
+            throw PGPError(_nsError: NSError(domain: "Invalid encrypted message", code: -1))
+        }
+        
+        try ObjectivePGP.verifySignature(signatureData, using: [key])
     }
     
     func exportKeychain(with fileUrl: URL) throws {

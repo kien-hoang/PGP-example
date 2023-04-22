@@ -10,17 +10,19 @@ import Foundation
 import ObjectivePGP
 
 final class VerifySignaturePresenter {
-    
-    // MARK: - Public Variable
-    
+        
     // MARK: - Private Variable
     
     private weak var view: PresenterToViewVerifySignatureProtocol?
+    private let pgpService: PGPService
+    
+    private var signerPublicKey: Keychain?
     
     // MARK: - Lifecycle
     
-    init(view: PresenterToViewVerifySignatureProtocol) {
+    init(view: PresenterToViewVerifySignatureProtocol, pgpService: PGPService) {
         self.view = view
+        self.pgpService = pgpService
     }
 }
 
@@ -28,12 +30,28 @@ final class VerifySignaturePresenter {
 
 extension VerifySignaturePresenter: ViewToPresenterVerifySignatureProtocol {
     func requestVerifySignature(_ signedMessage: String) {
+        guard let signerPublicKey = signerPublicKey else {
+            view?.showError("Need signer's public key!")
+            return
+        }
         
+        do {
+            try pgpService.verify(signedMessage, key: signerPublicKey)
+            view?.showVerifySignatureSuccessMessage("Verify signature success!")
+        } catch {
+            view?.showError("Verify signature failed!")
+        }
     }
 }
 
-// MARK: - Private
+// MARK: - KeySelectionDelegate
 
-private extension VerifySignaturePresenter {
-    
+extension VerifySignaturePresenter {
+    func keySectionDidSelectKeychain(_ keychain: Keychain, type: KeychainType) {
+        let fingerprint = "Fingerprint: \(keychain.getShortFingerprint() ?? "not found")"
+        let typeString = "Type: \(keychain.getKeyType())"
+        
+        signerPublicKey = keychain
+        view?.showSignerPublicKey(fingerprint: fingerprint, typeString: typeString)
+    }
 }

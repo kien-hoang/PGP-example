@@ -31,6 +31,12 @@ final class TabBarViewController: UITabBarController {
         super.viewDidLoad()
         setupUI()
     }
+    
+    override var traitCollection: UITraitCollection {
+        let realTraits = super.traitCollection
+        let lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
+    }
 }
 
 // MARK: - PresenterToView
