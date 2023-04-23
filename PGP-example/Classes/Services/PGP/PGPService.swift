@@ -145,7 +145,7 @@ final class PGPService: IPGPService {
                                                detached: detached,
                                                using: [key],
                                                passphraseForKey: { _ in return passphrase })
-        let signedString = Armor.armored(signedData, as: .message)
+        let signedString = Armor.armored(signedData, as: detached ? .signature : .message)
         return signedString
     }
     
