@@ -20,6 +20,8 @@ protocol IPGPService {
     
     func verify(_ signedMessage: String, key: Keychain) throws
     
+    func decryptSignedMessage(_ signedMessage: String, key: Keychain) throws -> String
+    
     func verifySignature(_ signature: String, key: Keychain) throws
     
     func exportKeychain(with fileUrl: URL) throws

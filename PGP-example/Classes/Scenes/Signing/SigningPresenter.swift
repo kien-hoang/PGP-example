@@ -39,7 +39,7 @@ extension SigningPresenter: ViewToPresenterSigningProtocol {
         
         do {
             let signedString = try pgpService.sign(message: message,
-                                                   detached: true,
+                                                   detached: false,
                                                    key: selectedKey,
                                                    passphrase: passphrase)
             view?.showSignedMessage(signedString)
