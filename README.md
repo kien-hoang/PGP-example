@@ -10,6 +10,7 @@ This is an example project demonstrating how to use PGP encryption and decryptio
   - Import key from clipboard
 - Signing the message with private key, output with the signature
 - Verify if signature was signed with one of the given keys.
+- Get the plain text from the signed message
 - Encrypt data
 - Decrypt PGP encrypted data
 - Others:
