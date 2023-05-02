@@ -25,7 +25,7 @@ This is an example project demonstrating how to use PGP encryption and decryptio
 | Encryption | Decryption  | Settings  |
 | <img src="images/app-6.png" height="480"> | <img src="images/app-7.png" height="480"> | <img src="images/app-8.png" height="480"> |
     
-## Features need to be updated in the future
+## TO DO
 
 - [ ] Save keys to Core Data
 - [ ] Optimize UI: Add empty background UI for List Keys screen if it have no key in the app
